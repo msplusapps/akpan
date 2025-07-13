@@ -9,8 +9,10 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#features" class="nav-link">Features</a>
                     <a href="./documentation" class="nav-link">Documentation</a>
-                    <a href="#community" class="nav-link">Community</a>
-                    <a href="#download" class="nav-link">Download</a>
+                    <a href="./community" class="nav-link">Community</a>
+                    <a href="./download" class="nav-link">Download</a>
+                    <a href="./about" class="nav-link">About Us</a>
+                    <a href="./contact" class="nav-link">Contact Us</a>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-white focus:outline-none">

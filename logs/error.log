@@ -122,3 +122,4 @@
 
 [13-Jul-2025 14:24:52 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
 
+[13-Jul-2025 14:37:37 Europe/Berlin] [VIEW ERROR] View file not found: app/views/web/contact.view.php
