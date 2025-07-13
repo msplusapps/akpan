@@ -80,3 +80,48 @@ function auth() {
 Router::get('/dashboard', ['DashboardController', 'index'])->middleware('auth');
 
 ## 🧩 Controllers
+class WebController extends Controller {
+    public function index() {
+        return $this->view('home', ['title' => 'Welcome']);
+    }
+}
+
+Use $this->view('file', ['data' => 'value']) to pass data to views.
+
+##🧬 Models
+
+class User extends Model {
+    protected $table = 'users';
+}
+
+$users = User::all();
+$user = User::find(1);
+
+## 📚 Views
+Views are .view.php files stored in app/views/.
+
+Render them from a controller:
+return $this->view('auth/login', ['title' => 'Login']);
+Example app/views/auth/login.view.php:
+<h1><?= $title ?></h1>
+<form method="POST" action="/auth">
+    <input name="email" />
+    <input name="password" type="password" />
+    <button>Login</button>
+</form>
+
+
+
+## 📜 Migrations
+Add .sql files to app/migrations/.
+
+Example 2024_07_12_create_users_table.sql:
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Migrations are executed once and logged to the msk_migrations table.
