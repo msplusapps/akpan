@@ -123,3 +123,21 @@
 [13-Jul-2025 14:24:52 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
 
 [13-Jul-2025 14:37:37 Europe/Berlin] [VIEW ERROR] View file not found: app/views/web/contact.view.php
+[13-Jul-2025 17:07:35 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+
+[13-Jul-2025 17:12:19 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
+
+[13-Jul-2025 17:12:21 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
+
+[13-Jul-2025 17:12:51 Europe/Berlin] [ERROR] [2] Undefined variable $_Env in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
+
+[13-Jul-2025 17:12:51 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
+
+[13-Jul-2025 17:13:10 Europe/Berlin] [EXCEPTION] Array callback must have exactly two elements in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
+
+[13-Jul-2025 17:18:55 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+
+[13-Jul-2025 17:19:12 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+
+[13-Jul-2025 17:19:38 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+

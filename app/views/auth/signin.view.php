@@ -42,7 +42,7 @@
             ">Login</button>
         </form>
 
-        <a href="/" class="back-link">← Back to Homepage</a>
+        <a href="../" class="back-link">← Back to Homepage</a>
     </div>
 </body>
 

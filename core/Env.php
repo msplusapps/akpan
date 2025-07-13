@@ -14,3 +14,22 @@ class Env {
 }
 
 Env::load();
+
+function env($key, $default = null) {
+    $value = $_ENV[$key] ?? $default;
+
+    // Normalize boolean-like strings
+    if (strtolower($value) === 'true') return true;
+    if (strtolower($value) === 'false') return false;
+
+    return $value;
+}
+
+
+if (env('DEBUG') === 'true') {
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', 0);
+    error_reporting(0);
+}

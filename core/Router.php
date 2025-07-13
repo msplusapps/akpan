@@ -7,11 +7,8 @@ class Router {
         foreach (glob("app/middlewares/*.php") as $middlewareFile) {
             require_once $middlewareFile;
         }
-        $routeFile = $folder . '/web.php';
-        if (file_exists($routeFile)) {
+        foreach (glob("$folder/*.php") as $routeFile) {
             require_once $routeFile;
-        } else {
-            self::debug("❌ Route file not found: $routeFile");
         }
     }
 
@@ -36,12 +33,39 @@ class Router {
             self::loadRoutes();
             $loaded = true;
         }
-        $requestUri = trim(parse_url($requestUri, PHP_URL_PATH), '/');
+
+        $requestPath = parse_url($requestUri, PHP_URL_PATH);
+        $basePath = trim(dirname($_SERVER['SCRIPT_NAME']), '/');
+
+        if (!empty($basePath) && strpos($requestPath, "/{$basePath}") === 0) {
+            $requestPath = substr($requestPath, strlen("/{$basePath}"));
+        }
+
+        $requestPath = trim($requestPath, '/');
         $method = $_SERVER['REQUEST_METHOD'];
+
+        // Show all routes
+        foreach (self::$routes as $r) {
+            $m = strtoupper($r->method);
+            $u = $r->uri;
+            $a = is_array($r->action) ? implode('@', $r->action) : 'Closure';
+        }
+
+        $prefixMatched = false;
+
         foreach (self::$routes as $route) {
-            if ($route->uri === $requestUri && $route->method === $method) {
+            $definedRoute = trim($route->uri, '/');
+
+            if (str_starts_with($requestPath, explode('/', $definedRoute)[0])) {
+                $prefixMatched = true;
+            }
+
+            if ($definedRoute === $requestPath && $route->method === $method) {
+                self::debug("✅ Match found: {$method} /{$definedRoute}");
+
                 foreach ($route->middleware as $mw) {
                     if (function_exists($mw)) {
+                        self::debug("🛡️ Running middleware: $mw");
                         call_user_func($mw);
                     } else {
                         self::debug("⚠️ Middleware '$mw' not found.");
@@ -49,6 +73,7 @@ class Router {
                 }
 
                 if (is_callable($route->action)) {
+                    self::debug("🔧 Calling closure action");
                     echo call_user_func($route->action);
                     return;
                 }
@@ -57,35 +82,45 @@ class Router {
                 $controllerPath = "app/controllers/{$controller}.php";
 
                 if (!file_exists($controllerPath)) {
-                    return self::fallback("❌ Controller file not found: $controllerPath", $requestUri);
+                    return self::fallback("❌ Controller file not found: $controllerPath", $requestPath);
                 }
 
                 require_once $controllerPath;
 
                 if (!class_exists($controller)) {
-                    return self::fallback("❌ Controller class not found: {$controller}", $requestUri);
+                    return self::fallback("❌ Controller class not found: {$controller}", $requestPath);
                 }
 
                 $instance = new $controller;
 
                 if (!method_exists($instance, $methodName)) {
-                    return self::fallback("❌ Method '{$methodName}' not found in '{$controller}'", $requestUri);
+                    return self::fallback("❌ Method '{$methodName}' not found in '{$controller}'", $requestPath);
                 }
+
+                self::debug("🔧 Executing: {$controller}::{$methodName}()");
                 return call_user_func([$instance, $methodName]);
             }
         }
 
-        return self::fallback("❌ Route not found: '{$requestUri}'", $requestUri);
+        if ($prefixMatched) {
+            return self::fallback("⚠️ No exact route found for '{$requestPath}', but similar prefix exists.", $requestPath);
+        }
+
+        return self::fallback("❌ Route not found: '{$requestPath}'", $requestPath);
     }
 
     protected static function fallback($msg, $requestUri = '') {
+        self::debug("🟥 404 Error: $msg");
         require_once "app/controllers/_404Controller.php";
         (new _404Controller)->index([$msg, __FILE__, $requestUri]);
     }
 
-    protected static function debug($text) {
-        echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
+    protected static function debug($text){
+        if (env('DEBUG') === 'true') {
+            echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
+        }
     }
+
 
     protected $method;
     protected $uri;

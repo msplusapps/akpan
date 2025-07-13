@@ -1,8 +1,8 @@
 <?php
 
-Router::get('/auth', ['AuthController', 'index'])->name('auth');
-Router::post('/auth', ['AuthController', 'authenticate']);
-// Router::post('/logout', ['AuthController', 'logout'])->middleware('auth');
+Router::get("auth/", ['AuthController', 'index']);
+Router::post("auth/login", ['AuthController', 'authenticate']);
+Router::get("auth/logout", ['AuthController', 'logout'])->middleware('auth');
 
-// Router::get('/register', ['AuthController', 'showRegister'])->name('register');
-// Router::post('/register', ['AuthController', 'register']);
+Router::get("auth/register", ['AuthController', 'showRegister']);
+Router::post("auth/register", ['AuthController', 'register']);
