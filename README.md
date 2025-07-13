@@ -147,8 +147,8 @@ Errors are saved to logs/error.log for further inspection.
 AkpanMVC is open-sourced software licensed under the MIT license.
 
 ## 🙌 Author
-Promise Peter Akpan
-GitHub: @Mr-skillz
+msplusapps
+GitHub: @msplusapps
 Packagist: msplusapps/akpan
 
 ## 💡 Contribute
