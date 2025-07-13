@@ -232,7 +232,7 @@ class User extends Model {
                 <p class="text-xl text-gray-600 mb-10">Install Akpan MVC today and start building amazing web applications.</p>
                 <div class="bg-white rounded-lg shadow-xl p-8 mb-10">
                     <div class="code-block p-4 mb-6 text-left">
-                        <pre><code class="language-bash">composer create-project akpan/mvc your-project-name</code></pre>
+                        <pre><code class="language-bash">composer create-project msplusapps/akpan your-project-name</code></pre>
                     </div>
                     <p class="text-gray-600 mb-6">Or download the latest release:</p>
                     <a href="#" class="gradient-bg text-white font-bold py-3 px-8 rounded-full inline-block hover:opacity-90 transition duration-300">Download v1.0.0</a>

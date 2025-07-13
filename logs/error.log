@@ -38,3 +38,9 @@
 
 [12-Jul-2025 12:01:44 Europe/Berlin] [DB CONNECTION FAILED] SQLSTATE[HY000] [1049] Unknown database 'akpan_db'
 [12-Jul-2025 12:03:54 Europe/Berlin] [Migration Class Not Found] Expected: UsersTable in 2025_07_11_create_users_table.php
+[13-Jul-2025 09:43:20 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 09:45:40 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 09:45:41 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 09:45:56 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 09:46:07 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 09:46:10 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php

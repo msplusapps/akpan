@@ -18,19 +18,34 @@ class Controller {
     /**
      * Load a view from app/views/
      */
-    public function view($view, $data = []){
+   public function view($view, $data = []){
         extract($data);
 
         $path = "app/views/{$view}.view.php";
 
         if (!file_exists($path)) {
-            error_log("[VIEW ERROR] View file not found: {$path}");
-            echo "<h2 style='color:red;'>View file not found: {$path}</h2>";
+            $errorMessage = "View file not found: {$path}";
+            error_log("[VIEW ERROR] " . $errorMessage);
+
+            // Fallback to a custom 404 view with message
+            $message = $errorMessage;
+            $file = $path;
+
+            // Optional: you can define a default 404 view
+            $fallbackView = "app/views/404.view.php";
+
+            if (file_exists($fallbackView)) {
+                require_once $fallbackView;
+            } else {
+                echo "<h2 style='color:red;'>$message</h2><p>$file</p>";
+            }
+
             return;
         }
 
         require_once $path;
     }
+
 
 
     /**
