@@ -1,16 +1,20 @@
 {
   "name": "msplus247/akpan",
   "description": "A lightweight PHP MVC framework.",
-  "type": "library",
+  "type": "project",
   "license": "MIT",
   "authors": [
     {
-      "name": "Promise Peter",
-      "email": "skillzdboss@gmail.com"
+      "name": "msplusapps",
+      "email": "msplus247@gmail.com"
     }
   ],
   "require": {
-    "php": ">=7.4"
+    "php": "^8.1"
   },
-  "minimum-stability": "stable"
+  "bin": [
+    "bin/akpan"
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
