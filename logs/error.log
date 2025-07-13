@@ -1,0 +1,40 @@
+[11-Jul-2025 21:38:56 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 9
+
+[11-Jul-2025 21:39:12 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 7
+
+[11-Jul-2025 21:39:52 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+
+[11-Jul-2025 21:39:53 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+
+[11-Jul-2025 21:39:54 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+
+[12-Jul-2025 06:50:12 Europe/Berlin] [EXCEPTION] Object of class Router could not be converted to string in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 44
+
+[12-Jul-2025 06:57:52 Europe/Berlin] PHP Fatal error:  Cannot redeclare auth() (previously declared in C:\desciple.com\htdocs\Apps\akpan\core\functions.php:22) in C:\desciple.com\htdocs\Apps\akpan\app\middlewares\auth.php on line 5
+[12-Jul-2025 07:11:05 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
+[12-Jul-2025 07:11:30 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/signin.view.php
+[12-Jul-2025 10:31:28 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
+[12-Jul-2025 10:33:57 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
+[12-Jul-2025 10:37:31 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth.view.php
+[12-Jul-2025 10:59:46 Europe/Berlin] [ERROR] [2] Undefined global variable $_SESSION in C:\desciple.com\htdocs\Apps\akpan\app\middlewares\auth.php on line 11
+
+[12-Jul-2025 11:35:25 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:36:00 Europe/Berlin] [EXCEPTION] Call to undefined function Env() in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:37:04 Europe/Berlin] [ERROR] [2] Undefined variable $_env in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:37:04 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:37:34 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:37:35 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:37:44 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+
+[12-Jul-2025 11:42:31 Europe/Berlin] [EXCEPTION] Class "Database" not found in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 3
+
+[12-Jul-2025 11:42:45 Europe/Berlin] [EXCEPTION] Class "Database" not found in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 3
+
+[12-Jul-2025 12:01:44 Europe/Berlin] [DB CONNECTION FAILED] SQLSTATE[HY000] [1049] Unknown database 'akpan_db'
+[12-Jul-2025 12:03:54 Europe/Berlin] [Migration Class Not Found] Expected: UsersTable in 2025_07_11_create_users_table.php

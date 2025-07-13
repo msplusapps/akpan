@@ -1,0 +1,16 @@
+{
+  "name": "akpan/akpan",
+  "description": "A lightweight PHP MVC framework.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Promise Peter",
+      "email": "skillzdboss@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "minimum-stability": "stable"
+}
