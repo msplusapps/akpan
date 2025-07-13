@@ -58,3 +58,25 @@ DB_HOST=localhost
 DB_NAME=akpanmvc
 DB_USER=root
 DB_PASS=
+
+
+## 🌐 Routing
+Router::get('/', ['WebController', 'index'])->name('home');
+
+Router::get('/login', ['AuthController', 'login'])->name('login');
+Router::post('/auth', ['AuthController', 'authenticate'])->middleware('guest');
+
+Router::get('/dashboard', ['DashboardController', 'index'])->middleware('auth');
+
+##🧍‍♂️ Middleware
+// app/middlewares/auth.php
+function auth() {
+    if (!isset($_SESSION['user'])) {
+        header("Location: /login");
+        exit;
+    }
+}
+
+Router::get('/dashboard', ['DashboardController', 'index'])->middleware('auth');
+
+## 🧩 Controllers
