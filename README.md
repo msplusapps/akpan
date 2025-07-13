@@ -88,7 +88,7 @@ class WebController extends Controller {
 
 Use $this->view('file', ['data' => 'value']) to pass data to views.
 
-##🧬 Models
+## 🧬 Models
 
 class User extends Model {
     protected $table = 'users';
@@ -125,3 +125,42 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 Migrations are executed once and logged to the msk_migrations table.
+
+## 🧪 Local Testing
+Run the app locally using PHP’s built-in server:
+
+
+php -S localhost:8000 -t public
+Then visit: http://localhost:8000
+
+## Debugging
+Debug output is automatically displayed via Router::debug():
+
+
+[ROUTE LOADED] app/routes/web.php
+[DISPATCH] GET '/'
+[EXECUTE] WebController::index()
+Errors are saved to logs/error.log for further inspection.
+
+
+## 📜 License
+AkpanMVC is open-sourced software licensed under the MIT license.
+
+## 🙌 Author
+Promise Peter Akpan
+GitHub: @Mr-skillz
+Packagist: msplusapps/akpan
+
+## 💡 Contribute
+Fork this repository
+
+Create your feature branch (git checkout -b feature/new-feature)
+
+Commit your changes
+
+Push to the branch
+
+Open a Pull Request
+
+❤️ Thank You
+Thanks for using AkpanMVC — we’d love to hear your feedback and ideas!
