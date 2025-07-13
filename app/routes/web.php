@@ -1,8 +1,19 @@
 <?php
 
+// 🏠 Home Page
+Router::get('/', ['WebController', 'index']);
 
-Router::get('/', ['WebController', 'index'])->middleware('auth')->name('home');
+// 📄 Documentation Page
+Router::get('/documentation', ['WebController', 'documentation']);
 
-// Router::get('/', ['AuthController', 'login'])
-//     ->middleware('guest')
-//     ->name('login');
+// 📖 About Page
+Router::get('/about', ['WebController', 'about']);
+
+// 📞 Contact Page
+Router::get('/contact', ['WebController', 'contact']);
+
+// 💼 Services Page
+Router::get('/services', ['WebController', 'services']);
+
+// 📰 Blog Page
+Router::get('/blog', ['WebController', 'blog']);

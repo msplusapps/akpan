@@ -1,16 +1,17 @@
 <?php
 
-class Router
-{
+class Router {
     protected static $routes = [];
 
     public static function loadRoutes($folder = 'app/routes') {
-        $uri = trim($_GET['url'] ?? '', '/');
-        $routeFile = "{$folder}/" . ($uri ?: 'web') . ".php";
+        foreach (glob("app/middlewares/*.php") as $middlewareFile) {
+            require_once $middlewareFile;
+        }
+        $routeFile = $folder . '/web.php';
         if (file_exists($routeFile)) {
             require_once $routeFile;
         } else {
-            self::debug("[ROUTE NOT FOUND FILE] $routeFile");
+            self::debug("❌ Route file not found: $routeFile");
         }
     }
 
@@ -25,7 +26,7 @@ class Router
     protected static function add($method, $uri, $action) {
         $route = new self($method, trim($uri, '/'), $action);
         self::$routes[] = $route;
-        $actionDisplay = is_array($action) ? implode('@', $action) : (is_callable($action) ? 'Closure' : 'Unknown');
+        $name = is_array($action) ? implode('@', $action) : 'Closure';
         return $route;
     }
 
@@ -35,34 +36,19 @@ class Router
             self::loadRoutes();
             $loaded = true;
         }
-
-        $requestUri = trim($requestUri, '/');
+        $requestUri = trim(parse_url($requestUri, PHP_URL_PATH), '/');
         $method = $_SERVER['REQUEST_METHOD'];
-
-        if (empty(self::$routes)) {
-            self::debug("[ERROR] No routes registered.");
-        }
-
         foreach (self::$routes as $route) {
             if ($route->uri === $requestUri && $route->method === $method) {
                 foreach ($route->middleware as $mw) {
-                    $middlewareFile = "app/middlewares/{$mw}.php";
-
-                    if (file_exists($middlewareFile)) {
-                        require_once $middlewareFile;
-                        if (function_exists($mw)) {
-                            call_user_func($mw);
-                        } else {
-                            self::debug("[ERROR] Middleware function '$mw' not found in file.");
-                        }
+                    if (function_exists($mw)) {
+                        call_user_func($mw);
                     } else {
-                        self::debug("[WARNING] Middleware file not found: $middlewareFile");
+                        self::debug("⚠️ Middleware '$mw' not found.");
                     }
                 }
 
-                // Run the controller or closure
                 if (is_callable($route->action)) {
-                    self::debug("[CALLABLE] Inline closure");
                     echo call_user_func($route->action);
                     return;
                 }
@@ -71,44 +57,36 @@ class Router
                 $controllerPath = "app/controllers/{$controller}.php";
 
                 if (!file_exists($controllerPath)) {
-                    return self::fallback("Controller file not found: {$controllerPath}", $requestUri);
+                    return self::fallback("❌ Controller file not found: $controllerPath", $requestUri);
                 }
 
                 require_once $controllerPath;
 
                 if (!class_exists($controller)) {
-                    return self::fallback("Controller class '{$controller}' not found", $requestUri);
+                    return self::fallback("❌ Controller class not found: {$controller}", $requestUri);
                 }
 
                 $instance = new $controller;
 
                 if (!method_exists($instance, $methodName)) {
-                    return self::fallback("Method '{$methodName}' not found in '{$controller}'", $requestUri);
+                    return self::fallback("❌ Method '{$methodName}' not found in '{$controller}'", $requestUri);
                 }
                 return call_user_func([$instance, $methodName]);
             }
         }
 
-        return self::fallback("Route not found: '{$requestUri}'", $requestUri);
+        return self::fallback("❌ Route not found: '{$requestUri}'", $requestUri);
     }
 
     protected static function fallback($msg, $requestUri = '') {
-        self::debug("[404] $msg");
-
         require_once "app/controllers/_404Controller.php";
-        (new _404Controller)->index([
-            $msg,
-            __FILE__,
-            $requestUri
-        ]);
+        (new _404Controller)->index([$msg, __FILE__, $requestUri]);
     }
 
-    // Debug output
     protected static function debug($text) {
         echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
     }
 
-    // Class properties and chaining
     protected $method;
     protected $uri;
     protected $action;

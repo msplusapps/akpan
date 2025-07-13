@@ -18,12 +18,12 @@ class WebController extends Controller
         ]);
     }
 
-    public function documentation()
-    {
-        $this->view('web/documentation', [
-            'title' => 'Documentation',
-            'message' => 'We are building a custom MVC framework.'
-        ]);
+    public function documentation(){
+        echo "documentation";
+        // $this->view('web/documentation', [
+        //     'title' => 'Documentation',
+        //     'message' => 'We are building a custom MVC framework.'
+        // ]);
     }
 
     public function contact()

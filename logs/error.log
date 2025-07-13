@@ -44,3 +44,81 @@
 [13-Jul-2025 09:45:56 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
 [13-Jul-2025 09:46:07 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
 [13-Jul-2025 09:46:10 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
+[13-Jul-2025 10:08:26 Europe/Berlin] Header part not found: app/views/partials/header.php
+[13-Jul-2025 10:08:26 Europe/Berlin] Header part not found: app/views/partials/header.php
+[13-Jul-2025 10:08:46 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
+[13-Jul-2025 10:08:46 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
+[13-Jul-2025 10:09:04 Europe/Berlin] Header part not found: ./partials/header.partial.php
+[13-Jul-2025 10:09:04 Europe/Berlin] Header part not found: ./partials/header.partial.php
+[13-Jul-2025 10:09:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/partials/header.partial.php
+[13-Jul-2025 10:09:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/partials/header.partial.php
+[13-Jul-2025 10:10:35 Europe/Berlin] Header part not found: ./app/views/partials/header.partial.php
+[13-Jul-2025 10:10:35 Europe/Berlin] Header part not found: ./app/views/partials/header.partial.php
+[13-Jul-2025 10:10:43 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
+[13-Jul-2025 10:10:43 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
+[13-Jul-2025 10:11:26 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
+[13-Jul-2025 10:11:26 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
+[13-Jul-2025 10:11:28 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
+[13-Jul-2025 10:11:28 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
+[13-Jul-2025 10:11:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:11:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:14:35 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:14:35 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:13 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:13 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:16 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:16 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:38 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:38 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:39 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:15:39 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:10 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:10 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:51 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:51 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:58 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+
+[13-Jul-2025 10:16:58 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:16:58 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+
+[13-Jul-2025 10:16:58 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:17:00 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+
+[13-Jul-2025 10:17:00 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:17:00 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+
+[13-Jul-2025 10:17:00 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:17:09 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:17:09 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:36:47 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:36:48 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:29 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:29 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:30 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:30 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:42:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:44:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:44:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
+[13-Jul-2025 10:46:37 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials//web/.partial.php
+[13-Jul-2025 10:46:37 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:46:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials//web/.partial.php
+[13-Jul-2025 10:46:39 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:48:10 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/web/partials//web/.partial.php
+[13-Jul-2025 10:48:10 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:48:18 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/app/views/web/partials//web/.partial.php
+[13-Jul-2025 10:48:18 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:49:26 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/app/views/web/partials/header.partial.php
+[13-Jul-2025 10:49:26 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:50:13 Europe/Berlin] Navbar part not found: app/views/partials//web/.partial.php
+[13-Jul-2025 10:50:13 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
+[13-Jul-2025 10:50:50 Europe/Berlin] Navbar part not found: app/views/partials//web/.partial.php
+[13-Jul-2025 10:50:50 Europe/Berlin] Footer part not found: /../app/views/partials/footer.partial.php
+[13-Jul-2025 14:15:57 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+
+[13-Jul-2025 14:24:52 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
+
