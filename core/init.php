@@ -20,3 +20,10 @@ require __DIR__ . "/Router.php";
 
 // Auto-run migrations (non-blocking)
 require_once __DIR__ . '/Migrations.php';
+
+// Plugins
+require __DIR__ . "/Plugin.php";
+require __DIR__ . "/PluginManager.php";
+
+$pluginManager = new Core\PluginManager(__DIR__ . '/../app/plugins');
+$pluginManager->discoverPlugins();
