@@ -1,143 +1,50 @@
-[11-Jul-2025 21:38:56 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 9
+[13-Jul-2025 19:44:25 Europe/Berlin] [EXCEPTION] Call to undefined method User::select() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 29
 
-[11-Jul-2025 21:39:12 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 7
+[13-Jul-2025 19:44:27 Europe/Berlin] [EXCEPTION] Call to undefined method User::select() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 29
 
-[11-Jul-2025 21:39:52 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+[13-Jul-2025 19:45:57 Europe/Berlin] [EXCEPTION] Call to undefined method User::select() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 29
 
-[11-Jul-2025 21:39:53 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+[13-Jul-2025 19:47:17 Europe/Berlin] [EXCEPTION] Call to undefined method User::select() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 29
 
-[11-Jul-2025 21:39:54 Europe/Berlin] [EXCEPTION] Call to undefined method class@anonymous::name() in C:\desciple.com\htdocs\Apps\akpan\app\routes\web.php on line 19
+[13-Jul-2025 20:04:35 Europe/Berlin] [ERROR] [2] Undefined array key 0 in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 28
 
-[12-Jul-2025 06:50:12 Europe/Berlin] [EXCEPTION] Object of class Router could not be converted to string in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 44
+[13-Jul-2025 20:17:57 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:17:58 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:18:16 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:18:17 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:18:21 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:18:45 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:18:50 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/sigup.view.php
+[13-Jul-2025 20:25:25 Europe/Berlin] [EXCEPTION] Call to undefined method User::execute() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 34
 
-[12-Jul-2025 06:57:52 Europe/Berlin] PHP Fatal error:  Cannot redeclare auth() (previously declared in C:\desciple.com\htdocs\Apps\akpan\core\functions.php:22) in C:\desciple.com\htdocs\Apps\akpan\app\middlewares\auth.php on line 5
-[12-Jul-2025 07:11:05 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
-[12-Jul-2025 07:11:30 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/signin.view.php
-[12-Jul-2025 10:31:28 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
-[12-Jul-2025 10:33:57 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth/login.view.php
-[12-Jul-2025 10:37:31 Europe/Berlin] [VIEW ERROR] View file not found: app/views/auth.view.php
-[12-Jul-2025 10:59:46 Europe/Berlin] [ERROR] [2] Undefined global variable $_SESSION in C:\desciple.com\htdocs\Apps\akpan\app\middlewares\auth.php on line 11
+[13-Jul-2025 20:27:04 Europe/Berlin] [EXCEPTION] Call to undefined method User::execute() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 33
 
-[12-Jul-2025 11:35:25 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[13-Jul-2025 20:27:25 Europe/Berlin] [EXCEPTION] Call to undefined method User::execute() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 33
 
-[12-Jul-2025 11:36:00 Europe/Berlin] [EXCEPTION] Call to undefined function Env() in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[13-Jul-2025 20:30:33 Europe/Berlin] [EXCEPTION] Call to undefined method User::execute() in C:\desciple.com\htdocs\Apps\akpan\app\models\User.php on line 33
 
-[12-Jul-2025 11:37:04 Europe/Berlin] [ERROR] [2] Undefined variable $_env in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[13-Jul-2025 23:38:00 Europe/Berlin] [EXCEPTION] Undefined constant "last_url" in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 24
 
-[12-Jul-2025 11:37:04 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[14-Jul-2025 00:20:44 Europe/Berlin] [EXCEPTION] Undefined constant "last_url" in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 24
 
-[12-Jul-2025 11:37:34 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[14-Jul-2025 00:57:19 Europe/Berlin] [ERROR] [2] Trying to access array offset on value of type null in C:\desciple.com\htdocs\Apps\akpan\app\controllers\AuthController.php on line 37
 
-[12-Jul-2025 11:37:35 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[14-Jul-2025 00:57:19 Europe/Berlin] [ERROR] [8192] openssl_decrypt(): Passing null to parameter #1 ($data) of type string is deprecated in C:\desciple.com\htdocs\Apps\akpan\core\Enc.php on line 24
 
-[12-Jul-2025 11:37:44 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 11
+[14-Jul-2025 00:57:23 Europe/Berlin] [ERROR] [2] Trying to access array offset on value of type null in C:\desciple.com\htdocs\Apps\akpan\app\controllers\AuthController.php on line 37
 
-[12-Jul-2025 11:42:31 Europe/Berlin] [EXCEPTION] Class "Database" not found in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 3
+[14-Jul-2025 00:57:23 Europe/Berlin] [ERROR] [8192] openssl_decrypt(): Passing null to parameter #1 ($data) of type string is deprecated in C:\desciple.com\htdocs\Apps\akpan\core\Enc.php on line 24
 
-[12-Jul-2025 11:42:45 Europe/Berlin] [EXCEPTION] Class "Database" not found in C:\desciple.com\htdocs\Apps\akpan\core\Migrations.php on line 3
+[14-Jul-2025 00:58:21 Europe/Berlin] [ERROR] [2] Trying to access array offset on value of type null in C:\desciple.com\htdocs\Apps\akpan\app\controllers\AuthController.php on line 37
 
-[12-Jul-2025 12:01:44 Europe/Berlin] [DB CONNECTION FAILED] SQLSTATE[HY000] [1049] Unknown database 'akpan_db'
-[12-Jul-2025 12:03:54 Europe/Berlin] [Migration Class Not Found] Expected: UsersTable in 2025_07_11_create_users_table.php
-[13-Jul-2025 09:43:20 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 09:45:40 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 09:45:41 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 09:45:56 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 09:46:07 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 09:46:10 Europe/Berlin] [VIEW ERROR] View file not found: app/views/home.view.php
-[13-Jul-2025 10:08:26 Europe/Berlin] Header part not found: app/views/partials/header.php
-[13-Jul-2025 10:08:26 Europe/Berlin] Header part not found: app/views/partials/header.php
-[13-Jul-2025 10:08:46 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
-[13-Jul-2025 10:08:46 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
-[13-Jul-2025 10:09:04 Europe/Berlin] Header part not found: ./partials/header.partial.php
-[13-Jul-2025 10:09:04 Europe/Berlin] Header part not found: ./partials/header.partial.php
-[13-Jul-2025 10:09:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/partials/header.partial.php
-[13-Jul-2025 10:09:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/partials/header.partial.php
-[13-Jul-2025 10:10:35 Europe/Berlin] Header part not found: ./app/views/partials/header.partial.php
-[13-Jul-2025 10:10:35 Europe/Berlin] Header part not found: ./app/views/partials/header.partial.php
-[13-Jul-2025 10:10:43 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
-[13-Jul-2025 10:10:43 Europe/Berlin] Header part not found: app/views/partials/header.partial.php
-[13-Jul-2025 10:11:26 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
-[13-Jul-2025 10:11:26 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
-[13-Jul-2025 10:11:28 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
-[13-Jul-2025 10:11:28 Europe/Berlin] Header part not found: ../app/views/partials/header.partial.php
-[13-Jul-2025 10:11:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:11:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:14:35 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:14:35 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:13 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:13 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:16 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:16 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:38 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:38 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:39 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:15:39 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:10 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:10 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:36 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:51 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:51 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:58 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+[14-Jul-2025 00:58:21 Europe/Berlin] [ERROR] [8192] openssl_decrypt(): Passing null to parameter #1 ($data) of type string is deprecated in C:\desciple.com\htdocs\Apps\akpan\core\Enc.php on line 24
 
-[13-Jul-2025 10:16:58 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:16:58 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+[14-Jul-2025 00:58:30 Europe/Berlin] [ERROR] [2] Trying to access array offset on value of type null in C:\desciple.com\htdocs\Apps\akpan\app\controllers\AuthController.php on line 37
 
-[13-Jul-2025 10:16:58 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:17:00 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+[14-Jul-2025 00:58:30 Europe/Berlin] [ERROR] [8192] openssl_decrypt(): Passing null to parameter #1 ($data) of type string is deprecated in C:\desciple.com\htdocs\Apps\akpan\core\Enc.php on line 24
 
-[13-Jul-2025 10:17:00 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:17:00 Europe/Berlin] [ERROR] [2] rtrim(): Invalid '..'-range, no character to the left of '..' in C:\desciple.com\htdocs\Apps\akpan\core\functions.php on line 25
+[14-Jul-2025 00:58:43 Europe/Berlin] [ERROR] [2] Trying to access array offset on value of type null in C:\desciple.com\htdocs\Apps\akpan\app\controllers\AuthController.php on line 37
 
-[13-Jul-2025 10:17:00 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:17:09 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:17:09 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:36:47 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:36:48 Europe/Berlin] Header part not found: ./../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:29 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:29 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:30 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:30 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:42:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:44:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:44:14 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials/header.partial.php
-[13-Jul-2025 10:46:37 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials//web/.partial.php
-[13-Jul-2025 10:46:37 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:46:39 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/partials//web/.partial.php
-[13-Jul-2025 10:46:39 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:48:10 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/../app/views/web/partials//web/.partial.php
-[13-Jul-2025 10:48:10 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:48:18 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/app/views/web/partials//web/.partial.php
-[13-Jul-2025 10:48:18 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:49:26 Europe/Berlin] Header part not found: C:\desciple.com\htdocs\Apps\akpan\core/app/views/web/partials/header.partial.php
-[13-Jul-2025 10:49:26 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:50:13 Europe/Berlin] Navbar part not found: app/views/partials//web/.partial.php
-[13-Jul-2025 10:50:13 Europe/Berlin] Footer part not found: app/views/partials/footer.partial.php
-[13-Jul-2025 10:50:50 Europe/Berlin] Navbar part not found: app/views/partials//web/.partial.php
-[13-Jul-2025 10:50:50 Europe/Berlin] Footer part not found: /../app/views/partials/footer.partial.php
-[13-Jul-2025 14:15:57 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
-[13-Jul-2025 14:24:52 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
-[13-Jul-2025 14:37:37 Europe/Berlin] [VIEW ERROR] View file not found: app/views/web/contact.view.php
-[13-Jul-2025 17:07:35 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
-[13-Jul-2025 17:12:19 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
-
-[13-Jul-2025 17:12:21 Europe/Berlin] [EXCEPTION] Call to undefined function env() in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
-
-[13-Jul-2025 17:12:51 Europe/Berlin] [ERROR] [2] Undefined variable $_Env in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
-
-[13-Jul-2025 17:12:51 Europe/Berlin] [EXCEPTION] Value of type null is not callable in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
-
-[13-Jul-2025 17:13:10 Europe/Berlin] [EXCEPTION] Array callback must have exactly two elements in C:\desciple.com\htdocs\Apps\akpan\core\Router.php on line 134
-
-[13-Jul-2025 17:18:55 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
-[13-Jul-2025 17:19:12 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
-[13-Jul-2025 17:19:38 Europe/Berlin] [ERROR] [2] Undefined array key "url" in C:\desciple.com\htdocs\Apps\akpan\index.php on line 6
-
+[14-Jul-2025 01:02:36 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/dashboard.view.php
+[14-Jul-2025 01:03:11 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/index.view.php
+[14-Jul-2025 01:09:28 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/index.view.php

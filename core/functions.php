@@ -21,9 +21,12 @@
         echo "</pre>";
     }
 
-    function redirect($url=last_url){
-        // echo "redirect";
+    function redirect($url = null) {
+        if (!$url) {
+            $url = $_SESSION['last'] ?? './';
+        }
         echo "<script>window.location.href='$url'</script>";
+        exit;
     }
 
     function base_path($path = '') {
@@ -71,12 +74,15 @@
         return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
 
-    function csrf_token(){
-        if (!isset($_SESSION['csrf_token'])) {
+    function csrf_token() {
+        if (empty($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }
-        return $_SESSION['csrf_token'];
+
+        $token = $_SESSION['csrf_token'];
+        return "<input type='hidden' name='csrf_token' value='{$token}'>";
     }
+
 
     function csrf_field(){
         return '<input type="hidden" name="csrf_token" value="' . csrf_token() . '">';
@@ -88,5 +94,26 @@
             if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
                 die('Invalid CSRF token');
             }
+        }
+    }
+
+    spl_autoload_register(function ($class) {
+        $class = str_replace('\\', '/', $class);
+        $paths = [
+            "app/models/{$class}.php",
+        ];
+        foreach ($paths as $path) {
+            if (file_exists($path)) {
+                require_once $path;
+                return;
+            }
+        }
+    });
+
+    if (!function_exists('url')) {
+        function url($path = '') {
+            $basePath = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+            $path = ltrim($path, '/');
+            return $basePath . '/' . $path;
         }
     }
