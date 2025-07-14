@@ -16,5 +16,12 @@
     "bin/akpan"
   ],
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "core/",
+      "App\\Plugins\\": "app/plugins/"
+    }
+  }
 }

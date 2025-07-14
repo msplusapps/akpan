@@ -9,4 +9,3 @@ require __DIR__ . "/Model.php";
 require __DIR__ . "/Controller.php";
 require __DIR__ . "/Router.php";
 require_once __DIR__ . '/Migrations.php';
-
