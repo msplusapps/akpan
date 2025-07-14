@@ -21,7 +21,8 @@
     "psr-4": {
       "App\\": "app/",
       "Core\\": "core/",
-      "App\\Plugins\\": "app/plugins/"
+      "App\\Plugins\\": "app/plugins/",
+      "App\\Plugins\\Auth\\": "app/plugins/Auth/"
     }
   }
 }
