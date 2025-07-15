@@ -37,7 +37,7 @@ class AuthPlugin extends Plugin {
     private function registerRoutes() {
         Router::get('/auth/login', 'AuthController@login');
         Router::post('/auth/login', 'AuthController@login');
-        Router.get('/auth/register', 'AuthController@register');
+        Router::get('/auth/register', 'AuthController@register');
         Router::post('/auth/register', 'AuthController@register');
         Router::get('/auth/logout', 'AuthController@logout');
     }
