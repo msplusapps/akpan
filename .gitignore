@@ -1,4 +1,4 @@
 .env
 .git
-/logs/error.log
+/logs
 /bin
