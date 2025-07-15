@@ -1,5 +1,7 @@
 <?php
 
+namespace Auth;
+
 use Core\Plugin;
 use Core\Router;
 use Core\Database;
@@ -15,11 +17,18 @@ class AuthPlugin extends Plugin {
 
     public function activate() {
         $this->createUsersTable();
-        $this->registerRoutes();
     }
 
     public function deactivate() {
         // Code to run when the plugin is deactivated
+    }
+
+    public function register(Router $router) {
+        $router->get('/auth/login', 'AuthController@login');
+        $router->post('/auth/login', 'AuthController@login');
+        $router->get('/auth/register', 'AuthController@register');
+        $router->post('/auth/register', 'AuthController@register');
+        $router->get('/auth/logout', 'AuthController@logout');
     }
 
     private function createUsersTable() {
@@ -32,13 +41,5 @@ class AuthPlugin extends Plugin {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
         $db->query($sql);
-    }
-
-    private function registerRoutes() {
-        Router::get('/auth/login', 'AuthController@login');
-        Router::post('/auth/login', 'AuthController@login');
-        Router::get('/auth/register', 'AuthController@register');
-        Router::post('/auth/register', 'AuthController@register');
-        Router::get('/auth/logout', 'AuthController@logout');
     }
 }

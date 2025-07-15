@@ -5,7 +5,7 @@ namespace Core;
 class Router {
     protected static $routes = [];
 
-    public static function loadRoutes($folder = 'app/routes') {
+    public function loadRoutes($folder = 'app/routes') {
         foreach (glob("app/middlewares/*.php") as $middlewareFile) {
             require_once $middlewareFile;
         }
@@ -29,10 +29,10 @@ class Router {
         return $route;
     }
 
-    public static function dispatch($requestUri) {
+    public function dispatch($requestUri) {
         static $loaded = false;
         if (!$loaded) {
-            self::loadRoutes();
+            $this->loadRoutes();
             $loaded = true;
         }
 

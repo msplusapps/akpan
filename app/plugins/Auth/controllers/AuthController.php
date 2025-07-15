@@ -2,14 +2,14 @@
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
-        return $this->view('auth/signin');
+        return $this->view('Auth@auth/login');
     }
 
     public function register()
     {
-        return $this->view('auth/signup');
+        return $this->view('Auth@auth/register');
     }
 
     public function authenticate(){
@@ -18,14 +18,14 @@ class AuthController extends Controller
             empty($_SESSION['csrf_token']) ||
             $_POST['csrf_token'] !== $_SESSION['csrf_token']
         ) {
-            return $this->view('auth/signin', ['error' => 'Invalid CSRF token.']);
+            return $this->view('Auth@auth/login', ['error' => 'Invalid CSRF token.']);
         }
 
         $username = trim($_POST['user'] ?? '');
         $password = trim($_POST['password'] ?? '');
 
         if (empty($username) || empty($password)) {
-            return $this->view('auth/signin', [
+            return $this->view('Auth@auth/login', [
                 'error' => 'Username and password are required.',
                 'old'   => $_POST
             ]);
@@ -37,7 +37,7 @@ class AuthController extends Controller
         show($user['password']);
 
         if (!$user || decrypt($user['password']) !== $password) {
-            return $this->view('auth/signin', [
+            return $this->view('Auth@auth/login', [
                 'error' => 'Invalid credentials.',
                 'old'   => $_POST
             ]);
@@ -58,7 +58,7 @@ class AuthController extends Controller
             empty($_SESSION['csrf_token']) ||
             $_POST['csrf_token'] !== $_SESSION['csrf_token']
         ) {
-            return $this->view('auth/signup', ['error' => 'Invalid CSRF token.']);
+            return $this->view('Auth@auth/register', ['error' => 'Invalid CSRF token.']);
         }
 
         $name = trim($_POST['name'] ?? '');
@@ -72,21 +72,21 @@ class AuthController extends Controller
         ];
 
         if (empty($name) || empty($email) || empty($password) || empty($confirm)) {
-            return $this->view('auth/signup', [
+            return $this->view('Auth@auth/register', [
                 'error' => 'All fields are required.',
                 'old' => $old
             ]);
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->view('auth/signup', [
+            return $this->view('Auth@auth/register', [
                 'error' => 'Invalid email format.',
                 'old' => $old
             ]);
         }
 
         if ($password !== $confirm) {
-            return $this->view('auth/signup', [
+            return $this->view('Auth@auth/register', [
                 'error' => 'Passwords do not match.',
                 'old' => $old
             ]);
@@ -94,7 +94,7 @@ class AuthController extends Controller
 
         $userModel = new User();
         if ($userModel->findOne($email, 'email')) {
-            return $this->view('auth/signup', [
+            return $this->view('Auth@auth/register', [
                 'error' => 'Email already registered.',
                 'old' => $old
             ]);
@@ -110,7 +110,7 @@ class AuthController extends Controller
         ]);
 
         if (!$success) {
-            return $this->view('auth/signup', [
+            return $this->view('Auth@auth/register', [
                 'error' => 'Registration failed. Try again.',
                 'old' => $old
             ]);
