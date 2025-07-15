@@ -51,6 +51,16 @@ class PluginManager {
         foreach (glob($pluginDir . '/controllers/*.php') as $controllerFile) {
             require_once $controllerFile;
         }
+
+        // Load views
+        foreach (glob($pluginDir . '/views/*.php') as $viewFile) {
+            require_once $viewFile;
+        }
+
+        // Load migrations
+        foreach (glob($pluginDir . '/migrations/*.php') as $migrationFile) {
+            require_once $migrationFile;
+        }
     }
 
     /**
