@@ -26,7 +26,7 @@ class AuthPlugin extends Plugin {
 
     private function createUsersTable() {
         $db = new Database();
-        $sql = "CREATE TABLE IF NOT EXISTS users (
+        $sql = "CREATE TABLE IF NOT EXISTS akn_users (
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
