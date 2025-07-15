@@ -1,7 +1,5 @@
 <?php
 
-namespace Core;
-
 class Database
 {
     protected $pdo;

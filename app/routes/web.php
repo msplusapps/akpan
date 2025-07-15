@@ -1,5 +1,6 @@
 <?php
 use Core\Router;
+
 // 🏠 Home Page
 Router::get('/', ['WebController', 'index']);
 

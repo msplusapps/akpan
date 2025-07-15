@@ -1,8 +1,5 @@
 <?php
 
-use Core\Controller;
-use App\Models\User;
-
 class AuthController extends Controller
 {
     public function index()

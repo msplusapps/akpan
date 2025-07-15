@@ -29,9 +29,18 @@ class Router {
     }
 
     public static function dispatch($requestUri) {
+        global $pluginManager;
+
         static $loaded = false;
         if (!$loaded) {
             self::loadRoutes();
+            if(isset($pluginManager)){
+                foreach ($pluginManager->getPlugins() as $plugin) {
+                    if (method_exists($plugin, 'registerRoutes')) {
+                        $plugin->registerRoutes();
+                    }
+                }
+            }
             $loaded = true;
         }
 
@@ -112,8 +121,8 @@ class Router {
 
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
-        require_once "app/controllers/NotFoundController.php";
-        (new \NotFoundController)->index([$msg, __FILE__, $requestUri]);
+        require_once "app/controllers/_404Controller.php";
+        (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
     }
 
     protected static function debug($text){
