@@ -17,24 +17,11 @@ class AuthPlugin extends Plugin {
     }
 
     public function activate() {
-        $this->createUsersTable();
         $this->registerRoutes();
     }
 
     public function deactivate() {
         // Code to run when the plugin is deactivated
-    }
-
-    private function createUsersTable() {
-        $model = new Model();
-        $sql = "CREATE TABLE IF NOT EXISTS akn_users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(255) NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )";
-        $model->execute($sql);
     }
 
 
