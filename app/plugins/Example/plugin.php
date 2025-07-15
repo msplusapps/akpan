@@ -10,7 +10,7 @@ class ExamplePlugin extends Plugin {
         $this->name = 'Example Plugin';
         $this->version = '1.0';
         $this->author = 'Your Name';
-        $this->description = 'This is an example plugin.';
+        echo $this->description = 'This is an example plugin.';
     }
 
     public function activate() {
