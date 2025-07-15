@@ -13,9 +13,14 @@ class PluginManager {
      * @var string The directory where plugins are stored
      */
     private $pluginDir;
+    private $router;
 
     public function __construct($pluginDir) {
         $this->pluginDir = $pluginDir;
+    }
+
+    public function setRouter(Router $router) {
+        $this->router = $router;
     }
 
     /**
@@ -26,13 +31,21 @@ class PluginManager {
             return;
         }
 
+        $autoloader = require __DIR__ . '/../vendor/autoload.php';
+
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
+            $pluginName = basename($dir);
+            $autoloader->addPsr4($pluginName . '\\', $dir);
+
             $pluginFile = $dir . '/plugin.php';
             if (file_exists($pluginFile)) {
                 require_once $pluginFile;
-                $className = basename($dir) . 'Plugin';
+                $className = $pluginName . 'Plugin';
                 if (class_exists($className)) {
                     $plugin = new $className();
+                    if ($this->router) {
+                        $plugin->register($this->router);
+                    }
                     $this->plugins[] = $plugin;
                     $this->loadPluginFiles($dir);
                     $plugin->activate();

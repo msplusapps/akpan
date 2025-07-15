@@ -73,4 +73,11 @@ abstract class Plugin {
      * Method to run when the plugin is deactivated
      */
     abstract public function deactivate();
+
+    /**
+     * Method to register plugin routes
+     */
+    public function register(Router $router) {
+        // By default, do nothing.
+    }
 }

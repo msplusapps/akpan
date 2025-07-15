@@ -13,14 +13,13 @@ class ImageResizerPlugin extends Plugin {
     }
 
     public function activate() {
-        $this->registerRoutes();
     }
 
     public function deactivate() {
         // Code to run when the plugin is deactivated
     }
 
-    private function registerRoutes() {
-        Router::get('/image/resize', 'ImageController@resize');
+    public function register(Router $router) {
+        $router->get('/image/resize', 'ImageController@resize');
     }
 }
