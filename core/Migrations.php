@@ -82,6 +82,37 @@ class Migrations extends Database
     {
         echo "<pre style='color:white;background:#111;padding:8px;margin:4px 0;border-left:4px solid white;'>$msg</pre>";
     }
+    public function runPluginMigrations($pluginName)
+    {
+        $pluginMigrationsPath = __DIR__ . '/../app/plugins/' . $pluginName . '/migrations';
+
+        if (!is_dir($pluginMigrationsPath)) {
+            return;
+        }
+
+        $ran = $this->getRanMigrations();
+        $files = glob($pluginMigrationsPath . '/*.sql');
+
+        if (empty($files)) {
+            return;
+        }
+
+        foreach ($files as $file) {
+            $name = basename($file);
+
+            if (in_array($name, $ran)) {
+                continue;
+            }
+
+            try {
+                $sql = file_get_contents($file);
+                $this->pdo->exec($sql);
+                $this->logMigration($name);
+            } catch (PDOException $e) {
+                $this->logConsole("❌ Error running $name: " . $e->getMessage());
+            }
+        }
+    }
 }
 
 new Migrations();
