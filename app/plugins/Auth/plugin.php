@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Plugins\Auth;
+
 use Core\Plugin;
 use Core\Router;
 use Core\Database;

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Plugins\Auth\Models;
+
 use Core\Model;
 
 class User extends Model {

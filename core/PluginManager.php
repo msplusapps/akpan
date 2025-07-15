@@ -27,39 +27,12 @@ class PluginManager {
         }
 
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
-            $pluginFile = $dir . '/plugin.php';
-            if (file_exists($pluginFile)) {
-                require_once $pluginFile;
-                $className = basename($dir) . 'Plugin';
-                if (class_exists($className)) {
-                    $plugin = new $className();
-                    $this->plugins[] = $plugin;
-                    $this->loadPluginFiles($dir);
-                    $plugin->activate();
-                }
+            $className = 'App\\Plugins\\' . basename($dir) . '\\' . basename($dir) . 'Plugin';
+            if (class_exists($className)) {
+                $plugin = new $className();
+                $this->plugins[] = $plugin;
+                $plugin->activate();
             }
-        }
-    }
-
-    private function loadPluginFiles($pluginDir) {
-        // Load models
-        foreach (glob($pluginDir . '/models/*.php') as $modelFile) {
-            require_once $modelFile;
-        }
-
-        // Load controllers
-        foreach (glob($pluginDir . '/controllers/*.php') as $controllerFile) {
-            require_once $controllerFile;
-        }
-
-        // Load views
-        foreach (glob($pluginDir . '/views/*.php') as $viewFile) {
-            require_once $viewFile;
-        }
-
-        // Load migrations
-        foreach (glob($pluginDir . '/migrations/*.php') as $migrationFile) {
-            require_once $migrationFile;
         }
     }
 

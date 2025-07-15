@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Plugins\Auth\Controllers;
+
 use Core\Controller;
 use App\Plugins\Auth\Models\User;
 
