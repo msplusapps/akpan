@@ -1,6 +1,8 @@
  
 <?php
 
+use Core\Model;
+
 class User extends Model {
     protected $table = 'msk_users';
 

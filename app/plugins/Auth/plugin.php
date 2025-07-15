@@ -34,7 +34,7 @@ class AuthPlugin extends Plugin {
         $db->query($sql);
     }
 
-    private function registerRoutes() {
+    public function registerRoutes() {
         Router::get('/auth/login', 'AuthController@login');
         Router::post('/auth/login', 'AuthController@login');
         Router::get('/auth/register', 'AuthController@register');

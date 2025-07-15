@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Migrations extends Database
 {
     protected $migrationsPath = __DIR__ . '/../app/migrations';

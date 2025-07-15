@@ -99,4 +99,12 @@ class PluginManager {
             }
         }
     }
+
+    public function registerPluginRoutes() {
+        foreach ($this->plugins as $plugin) {
+            if (method_exists($plugin, 'registerRoutes')) {
+                $plugin->registerRoutes();
+            }
+        }
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+namespace Core;
 class Env {
     public static function load($path = __DIR__ . '/../.env') {
         if (!file_exists($path)) return;
