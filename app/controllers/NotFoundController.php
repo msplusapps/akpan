@@ -2,7 +2,7 @@
 
 use Core\Controller;
 
-class _404Controller extends Controller{
+class NotFoundController extends Controller{
     public function index($data = []){
         $this->view('404', [
             'message' => $data[0] ?? 'Page Not Found',
