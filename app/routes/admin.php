@@ -1,5 +1,5 @@
 <?php
-use Core\Router;
+
 // echo 'reading home route';
 Router::get("admin/", ['AdminController', 'index'])->middleware('auth');
 // Router::get('/about', ['WebController', 'about'])->name('about');
