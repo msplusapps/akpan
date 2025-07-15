@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Plugins\Example;
+
 use Core\Plugin;
 
 class ExamplePlugin extends Plugin {
@@ -17,5 +19,11 @@ class ExamplePlugin extends Plugin {
 
     public function deactivate() {
         // Code to run when the plugin is deactivated
+    }
+
+    public function registerRoutes() {
+        \Core\Router::get('/test', function () {
+            return 'This is the plugin test route';
+        });
     }
 }
