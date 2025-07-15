@@ -22,6 +22,6 @@ Router::get('/services', ['WebController', 'services']);
 // 📰 Blog Page
 Router::get('/blog', ['WebController', 'blog']);
 
-Router::get('/test', function () {
-    return 'This is the core test route';
-});
+// Router::get('/test', function () {
+//     return 'This is the core test route';
+// });

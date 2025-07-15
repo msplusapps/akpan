@@ -23,26 +23,52 @@ class PluginManager {
     /**
      * Discover all available plugins
      */
-    public function discoverPlugins() {
+    public function discoverPlugins(){
+        // echo "<strong>🔍 Scanning plugins in:</strong> {$this->pluginDir}<br/>";
+
         if (!is_dir($this->pluginDir)) {
+            echo "❌ Plugin directory does not exist.<br/>";
             return;
         }
 
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
             $pluginName = basename($dir);
-            echo $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
-            echo "<br/>";
+            $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
+            $expectedFile = "{$dir}/{$pluginName}Plugin.php";
+
+            if (!file_exists($expectedFile)) {
+                echo "❌ Plugin file not found at: {$expectedFile}<br/>";
+                continue;
+            }
+
+            require_once $expectedFile;
+
             if (class_exists($className)) {
                 $plugin = new $className();
                 $this->plugins[] = $plugin;
-                $plugin->activate();
 
-                // Run migrations for the plugin
-                $migrations = new Migrations();
-                $migrations->runPluginMigrations($pluginName);
+                if (method_exists($plugin, 'register')) {
+                    echo "📌 Calling register()<br/>";
+                    $plugin->register();
+                }
+
+                if (method_exists($plugin, 'activate')) {
+                    $plugin->activate();
+                }
+
+                if (class_exists(Migrations::class)) {
+                    echo "🗂️ Running migrations for plugin: {$pluginName}<br/>";
+                    $migrations = new Migrations();
+                    $migrations->runPluginMigrations($pluginName);
+                }
+            } else {
+                echo "❌ Plugin class not found: {$className}<br/>";
             }
+
+            echo "<hr/>";
         }
     }
+
 
     /**
      * Get a list of all available plugins
