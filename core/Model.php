@@ -2,7 +2,7 @@
 
 class Model
 {
-    protected $table;
+    protected static $table;
     protected $primaryKey = 'id';
     protected $pdo;
 
@@ -24,19 +24,19 @@ class Model
     }
 
     public function all(){
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table}");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . static::$table);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function find($id){
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE {$this->primaryKey} = :id LIMIT 1");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . static::$table . " WHERE {$this->primaryKey} = :id LIMIT 1");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function where($column, $value){
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE {$column} = :value");
+        $stmt = $this->pdo->prepare("SELECT * FROM " . static::$table . " WHERE {$column} = :value");
         $stmt->execute(['value' => $value]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -45,7 +45,7 @@ class Model
         $fields = implode(',', array_keys($data));
         $placeholders = implode(',', array_map(fn($f) => ":$f", array_keys($data)));
 
-        $stmt = $this->pdo->prepare("INSERT INTO {$this->table} ($fields) VALUES ($placeholders)");
+        $stmt = $this->pdo->prepare("INSERT INTO " . static::$table . " ($fields) VALUES ($placeholders)");
         return $stmt->execute($data);
     }
 
@@ -59,12 +59,12 @@ class Model
         $updates = implode(', ', array_map(fn($k) => "$k = :$k", array_keys($data)));
         $data[$this->primaryKey] = $id;
 
-        $stmt = $this->pdo->prepare("UPDATE {$this->table} SET $updates WHERE {$this->primaryKey} = :{$this->primaryKey}");
+        $stmt = $this->pdo->prepare("UPDATE " . static::$table . " SET $updates WHERE {$this->primaryKey} = :{$this->primaryKey}");
         return $stmt->execute($data);
     }
 
     public function delete($id){
-        $stmt = $this->pdo->prepare("DELETE FROM {$this->table} WHERE {$this->primaryKey} = :id");
+        $stmt = $this->pdo->prepare("DELETE FROM " . static::$table . " WHERE {$this->primaryKey} = :id");
         return $stmt->execute(['id' => $id]);
     }
 
