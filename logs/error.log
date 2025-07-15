@@ -62,3 +62,14 @@
 
 [15-Jul-2025 07:37:10 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
 
+[15-Jul-2025 07:50:25 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:50:28 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:51:28 Europe/Berlin] PHP Fatal error:  Cannot redeclare non static Model::$table as static User::$table in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+[15-Jul-2025 07:52:15 Europe/Berlin] [EXCEPTION] Class "Core\Database" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\plugin.php on line 26
+
+[15-Jul-2025 07:52:57 Europe/Berlin] PHP Fatal error:  Cannot redeclare non static Model::$table as static User::$table in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 3
+[15-Jul-2025 07:52:58 Europe/Berlin] PHP Fatal error:  Cannot redeclare non static Model::$table as static User::$table in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 3
+[15-Jul-2025 07:53:48 Europe/Berlin] PHP Fatal error:  Cannot redeclare non static Model::$table as static User::$table in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+[15-Jul-2025 07:54:07 Europe/Berlin] PHP Fatal error:  Cannot redeclare non static Model::$table as static User::$table in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
