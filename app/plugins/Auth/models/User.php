@@ -1,12 +1,16 @@
  
 <?php
 
-class User extends Model {
+// namespace App\Plugins\Auth\Models;
+
+use Core\Model; // ✅ this line imports the base Model
+
+class Users extends Model {
     protected $table = 'msk_users';
 
     // Get all users
     public function all(){
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM " . static::$table;
         return $this->select($sql);
     }
 
