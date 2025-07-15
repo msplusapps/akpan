@@ -126,7 +126,7 @@ class Router {
     }
 
     protected static function debug($text){
-        if (env('DEBUG') === 'true') {
+        if (\env('DEBUG') === 'true') {
             echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
         }
     }
