@@ -24,21 +24,31 @@ class PluginManager {
      * Discover all available plugins
      */
     public function discoverPlugins(){
-        // echo "<strong>🔍 Scanning plugins in:</strong> {$this->pluginDir}<br/>";
-
         if (!is_dir($this->pluginDir)) {
             echo "❌ Plugin directory does not exist.<br/>";
             return;
         }
 
+        // Parse request path (e.g. /auth/login)
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+        $requestPath = trim(parse_url($requestUri, PHP_URL_PATH), '/');
+        $requestSegments = explode('/', $requestPath);
+        $targetPlugin = ucfirst($requestSegments[0] ?? '');
+
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
             $pluginName = basename($dir);
+
+            // Only continue if this plugin matches the first part of the URI
+            if ($pluginName !== $targetPlugin) {
+                continue;
+            }
+
             $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
             $expectedFile = "{$dir}/{$pluginName}Plugin.php";
 
             if (!file_exists($expectedFile)) {
                 echo "❌ Plugin file not found at: {$expectedFile}<br/>";
-                continue;
+                return;
             }
 
             require_once $expectedFile;
@@ -53,6 +63,7 @@ class PluginManager {
                 }
 
                 if (method_exists($plugin, 'activate')) {
+                    echo "🚀 Activating plugin<br/>";
                     $plugin->activate();
                 }
 
@@ -65,9 +76,10 @@ class PluginManager {
                 echo "❌ Plugin class not found: {$className}<br/>";
             }
 
-            echo "<hr/>";
+            break; // Stop after first match
         }
     }
+
 
 
     /**
