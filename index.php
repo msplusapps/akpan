@@ -1,4 +1,8 @@
 <?php
-require_once './core/init.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/core/functions.php';  // ✅ Ensure this is present
+require_once __DIR__ . '/core/init.php';
+
 use Core\Router;
-Router::dispatch($_GET['url'] ?? '/');
+
+Router::dispatch($_SERVER['REQUEST_URI']);

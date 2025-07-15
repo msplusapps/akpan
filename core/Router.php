@@ -29,9 +29,18 @@ class Router {
     }
 
     public static function dispatch($requestUri) {
+        global $pluginManager;
+
         static $loaded = false;
         if (!$loaded) {
             self::loadRoutes();
+            if(isset($pluginManager)){
+                foreach ($pluginManager->getPlugins() as $plugin) {
+                    if (method_exists($plugin, 'registerRoutes')) {
+                        $plugin->registerRoutes();
+                    }
+                }
+            }
             $loaded = true;
         }
 
@@ -113,11 +122,11 @@ class Router {
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
         require_once "app/controllers/_404Controller.php";
-        (new _404Controller)->index([$msg, __FILE__, $requestUri]);
+        (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
     }
 
     protected static function debug($text){
-        if (env('DEBUG') === 'true') {
+        if (function_exists('env') && env('DEBUG') === 'true') {
             echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
         }
     }

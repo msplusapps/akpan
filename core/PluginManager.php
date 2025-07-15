@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Migrations;
+
 class PluginManager {
 
     /**
@@ -33,6 +35,10 @@ class PluginManager {
                 $plugin = new $className();
                 $this->plugins[] = $plugin;
                 $plugin->activate();
+
+                // Run migrations for the plugin
+                $migrations = new Migrations();
+                $migrations->runPluginMigrations($pluginName);
             }
         }
     }
