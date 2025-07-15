@@ -30,7 +30,8 @@ class PluginManager {
 
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
             $pluginName = basename($dir);
-            $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
+            echo $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
+            echo "<br/>";
             if (class_exists($className)) {
                 $plugin = new $className();
                 $this->plugins[] = $plugin;
