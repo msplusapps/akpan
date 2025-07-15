@@ -10,7 +10,7 @@ class AuthPlugin extends Plugin {
         $this->name = 'Auth';
         $this->version = '1.0';
         $this->author = 'Mr Promise Peter';
-        echo $this->description = 'A simple authentication system.';
+        echo $this->description = 'A simple authentication system for Akpan MVC.';
     }
 
     public function activate() {
