@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use function env; 
+
 class Router {
     protected static $routes = [];
 
