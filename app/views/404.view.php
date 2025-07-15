@@ -1,3 +1,4 @@
+<?php if (!function_exists('asset')) die('❌ asset() not loaded'); ?>
 <!DOCTYPE html>
 <html lang="en">
 

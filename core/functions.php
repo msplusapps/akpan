@@ -1,12 +1,12 @@
 <?php
 
-
     function asset($path = '') {
+        echo "asset loaded";
         // Remove leading slashes and build full path
         $path = ltrim($path, '/');
 
         // Optional: use env BASE_URL if defined
-        $baseUrl = $_ENV['BASE_URL'] ?? '';
+        echo $baseUrl = $_ENV['BASE_URL'] ?? '';
         
         return rtrim($baseUrl, '/') . "/public/{$path}";
     }

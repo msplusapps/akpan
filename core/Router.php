@@ -113,7 +113,7 @@ class Router {
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
         require_once "app/controllers/NotFoundController.php";
-        (new NotFoundController)->index([$msg, __FILE__, $requestUri]);
+        (new \NotFoundController)->index([$msg, __FILE__, $requestUri]);
     }
 
     protected static function debug($text){
