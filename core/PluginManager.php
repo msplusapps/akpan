@@ -32,9 +32,24 @@ class PluginManager {
                 require_once $pluginFile;
                 $className = basename($dir) . 'Plugin';
                 if (class_exists($className)) {
-                    $this->plugins[] = new $className();
+                    $plugin = new $className();
+                    $this->plugins[] = $plugin;
+                    $this->loadPluginFiles($dir);
+                    $plugin->activate();
                 }
             }
+        }
+    }
+
+    private function loadPluginFiles($pluginDir) {
+        // Load models
+        foreach (glob($pluginDir . '/models/*.php') as $modelFile) {
+            require_once $modelFile;
+        }
+
+        // Load controllers
+        foreach (glob($pluginDir . '/controllers/*.php') as $controllerFile) {
+            require_once $controllerFile;
         }
     }
 

@@ -21,7 +21,13 @@ class Controller {
    public function view($view, $data = []){
         extract($data);
 
-        $path = "app/views/{$view}.view.php";
+        // Check if the view is in a plugin
+        if (strpos($view, '@') !== false) {
+            list($plugin, $view) = explode('@', $view);
+            $path = "app/plugins/{$plugin}/views/{$view}.view.php";
+        } else {
+            $path = "app/views/{$view}.view.php";
+        }
 
         if (!file_exists($path)) {
             $errorMessage = "View file not found: {$path}";
