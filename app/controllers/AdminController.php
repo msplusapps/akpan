@@ -1,17 +1,15 @@
 <?php
 
+use Core\Controller;
+use App\Models\User;
+
 class AdminController extends Controller
 {
     public function __construct()
     {
         // Require authentication
-        if (empty($_SESSION['user'])) {
+        if (empty($_SESSION['user_id'])) {
             redirect('auth/login');
-        }
-
-        // Optional: Check for admin role
-        if (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin') {
-            redirect('./');
         }
     }
 

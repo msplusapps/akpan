@@ -79,4 +79,41 @@ class Model
             return false;
         }
     }
+
+    public static function findOne($conditions)
+    {
+        $class = get_called_class();
+        $instance = new $class();
+        $tableName = static::$table;
+
+        $sql = "SELECT * FROM {$tableName} WHERE ";
+        $sql .= implode(' AND ', array_map(fn($c) => "$c = :$c", array_keys($conditions)));
+        $sql .= " LIMIT 1";
+
+        $stmt = $instance->pdo->prepare($sql);
+        $stmt->execute($conditions);
+        return $stmt->fetchObject($class);
+    }
+
+    public function save()
+    {
+        $class = get_called_class();
+        $tableName = static::$table;
+        $primaryKey = $this->primaryKey;
+
+        $data = [];
+        foreach (get_object_vars($this) as $key => $value) {
+            if ($key !== 'pdo' && $key !== 'primaryKey') {
+                $data[$key] = $value;
+            }
+        }
+
+        if (isset($this->$primaryKey)) {
+            // Update
+            $this->update($this->$primaryKey, $data);
+        } else {
+            // Insert
+            $this->insert($data);
+        }
+    }
 }
