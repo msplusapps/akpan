@@ -48,3 +48,17 @@
 [14-Jul-2025 01:02:36 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/dashboard.view.php
 [14-Jul-2025 01:03:11 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/index.view.php
 [14-Jul-2025 01:09:28 Europe/Berlin] [VIEW ERROR] View file not found: app/views/admin/index.view.php
+[15-Jul-2025 07:34:23 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:35:06 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:35:07 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:35:22 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:35:35 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:35:56 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+
+[15-Jul-2025 07:37:10 Europe/Berlin] [EXCEPTION] Class "Core\Model" not found in C:\desciple.com\htdocs\Apps\akpan\app\plugins\Auth\models\User.php on line 5
+

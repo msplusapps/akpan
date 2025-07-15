@@ -9,8 +9,8 @@ class AuthPlugin extends Plugin {
     public function __construct() {
         $this->name = 'Auth';
         $this->version = '1.0';
-        echo $this->author = 'Mr Promise Peter';
-        $this->description = 'A simple authentication system.';
+        $this->author = 'Mr Promise Peter';
+        echo $this->description = 'A simple authentication system.';
     }
 
     public function activate() {
@@ -24,7 +24,7 @@ class AuthPlugin extends Plugin {
 
     private function createUsersTable() {
         $db = new Database();
-        $sql = "CREATE TABLE IF NOT EXISTS users (
+        $sql = "CREATE TABLE IF NOT EXISTS msk_users2 (
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
