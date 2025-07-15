@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class ErrorHandler {
     public static function register() {
         ini_set('display_errors', '0'); // Hide from user

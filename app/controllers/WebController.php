@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use Core\Controller;
+
 class WebController extends Controller
 {
     public function index()
