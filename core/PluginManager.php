@@ -32,7 +32,6 @@ class PluginManager {
             if (class_exists($className)) {
                 $plugin = new $className();
                 $this->plugins[] = $plugin;
-                $plugin->activate();
             }
         }
     }
@@ -56,6 +55,18 @@ class PluginManager {
             if ($plugin->getName() === $pluginName) {
                 $plugin->activate();
                 // Here you would typically store the activation status in a database or a file
+                return;
+            }
+        }
+
+        $pluginDir = $this->pluginDir . '/' . str_replace(' ', '', $pluginName);
+        $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
+        if (file_exists($pluginDir . '/plugin.php')) {
+            require_once $pluginDir . '/plugin.php';
+            if (class_exists($className)) {
+                $plugin = new $className();
+                $this->plugins[] = $plugin;
+                $plugin->activate();
             }
         }
     }
