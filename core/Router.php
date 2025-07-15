@@ -81,13 +81,6 @@ class Router {
                 }
 
                 [$controller, $methodName] = $route->action;
-                $controllerPath = "app/controllers/{$controller}.php";
-
-                if (!file_exists($controllerPath)) {
-                    return self::fallback("❌ Controller file not found: $controllerPath", $requestPath);
-                }
-
-                require_once $controllerPath;
 
                 if (!class_exists($controller)) {
                     return self::fallback("❌ Controller class not found: {$controller}", $requestPath);
@@ -113,8 +106,7 @@ class Router {
 
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
-        require_once "app/controllers/_404Controller.php";
-        (new _404Controller)->index([$msg, __FILE__, $requestUri]);
+        (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
     }
 
     protected static function debug($text){

@@ -1,22 +1,25 @@
 <?php
 
+use Core\Router;
+use App\Controllers\WebController;
+
 // 🏠 Home Page
-Router::get('/', ['WebController', 'index']);
+Router::get('/', [WebController::class, 'index']);
 
 // 📄 Documentation Page
-Router::get('/documentation', ['WebController', 'documentation']);
+Router::get('/documentation', [WebController::class, 'documentation']);
 
 // 📖 download Page
-Router::get('/about', ['WebController', 'about']);
+Router::get('/about', [WebController::class, 'about']);
 
 // 📖 About Page
-Router::get('/download', ['WebController', 'download']);
+Router::get('/download', [WebController::class, 'download']);
 
 // 📞 Contact Page
-Router::get('/contact', ['WebController', 'contact']);
+Router::get('/contact', [WebController::class, 'contact']);
 
 // 💼 Services Page
-Router::get('/services', ['WebController', 'services']);
+Router::get('/services', [WebController::class, 'services']);
 
 // 📰 Blog Page
-Router::get('/blog', ['WebController', 'blog']);
+Router::get('/blog', [WebController::class, 'blog']);

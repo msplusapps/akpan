@@ -1,4 +1,8 @@
 <?php
+namespace App\Controllers;
+
+use Core\Controller;
+
 class _404Controller extends Controller{
     public function index($data = []){
         $this->view('404', [
