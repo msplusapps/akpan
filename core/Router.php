@@ -21,10 +21,20 @@ class Router {
         return self::add('POST', $uri, $action);
     }
 
+    public static function getRoutes() {
+        return self::$routes;
+    }
+
     protected static function add($method, $uri, $action) {
-        $route = new self($method, trim($uri, '/'), $action);
+        $uri = trim($uri, '/');
+        foreach (self::$routes as $route) {
+            if ($route->uri === $uri && $route->method === strtoupper($method)) {
+                trigger_error("Duplicate route found for method {$method} and URI '{$uri}'.", E_USER_WARNING);
+            }
+        }
+
+        $route = new self($method, $uri, $action);
         self::$routes[] = $route;
-        $name = is_array($action) ? implode('@', $action) : 'Closure';
         return $route;
     }
 
@@ -33,14 +43,17 @@ class Router {
 
         static $loaded = false;
         if (!$loaded) {
-            self::loadRoutes();
-            if(isset($pluginManager)){
+            // Load plugin routes first
+            if (isset($pluginManager)) {
                 foreach ($pluginManager->getPlugins() as $plugin) {
                     if (method_exists($plugin, 'registerRoutes')) {
                         $plugin->registerRoutes();
                     }
                 }
             }
+
+            // Then load core routes
+            self::loadRoutes();
             $loaded = true;
         }
 
