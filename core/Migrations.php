@@ -24,7 +24,7 @@ class Migrations extends Database
         ) ENGINE=INNODB;";
         try {
             $this->pdo->exec($sql);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             $this->logConsole("❌ Failed to create migrations table: " . $e->getMessage());
         }
     }
@@ -32,9 +32,9 @@ class Migrations extends Database
     protected function getRanMigrations(){
         try {
             $stmt = $this->pdo->query("SELECT migration FROM msk_migrations");
-            $ran = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            $ran = $stmt->fetchAll(\PDO::FETCH_COLUMN);
             return $ran;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             $this->logConsole("❌ Could not fetch migrations: " . $e->getMessage());
             return [];
         }
@@ -46,7 +46,7 @@ class Migrations extends Database
             $stmt = $this->pdo->prepare("INSERT INTO msk_migrations (migration) VALUES (:migration)");
             $stmt->execute(['migration' => $migration]);
             $this->logConsole("📝 Logged migration: $migration");
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             $this->logConsole("❌ Failed to log migration $migration: " . $e->getMessage());
         }
     }
@@ -72,7 +72,7 @@ class Migrations extends Database
                 $sql = file_get_contents($file);
                 $this->pdo->exec($sql);
                 $this->logMigration($name);
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 $this->logConsole("❌ Error running $name: " . $e->getMessage());
             }
         }
@@ -108,7 +108,7 @@ class Migrations extends Database
                 $sql = file_get_contents($file);
                 $this->pdo->exec($sql);
                 $this->logMigration($name);
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 $this->logConsole("❌ Error running $name: " . $e->getMessage());
             }
         }

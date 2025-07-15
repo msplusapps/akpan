@@ -5,6 +5,7 @@ namespace App\Plugins\Auth;
 use Core\Plugin;
 use Core\Router;
 use Core\Database;
+use Core\Model;
 
 class AuthPlugin extends Plugin {
 
@@ -25,7 +26,7 @@ class AuthPlugin extends Plugin {
     }
 
     private function createUsersTable() {
-        $db = new Database();
+        $model = new Model();
         $sql = "CREATE TABLE IF NOT EXISTS akn_users (
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
@@ -33,8 +34,9 @@ class AuthPlugin extends Plugin {
             email VARCHAR(255) NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
-        $db->query($sql);
+        $model->execute($sql);
     }
+
 
     private function registerRoutes() {
         Router::get('/auth/login', 'AuthController@login');

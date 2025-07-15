@@ -33,7 +33,7 @@ class PluginManager {
         $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
         $requestPath = trim(parse_url($requestUri, PHP_URL_PATH), '/');
         $requestSegments = explode('/', $requestPath);
-        $targetPlugin = ucfirst($requestSegments[0] ?? '');
+        $targetPlugin = ucfirst($requestSegments[2] ?? '');
 
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
             $pluginName = basename($dir);
@@ -63,7 +63,6 @@ class PluginManager {
                 }
 
                 if (method_exists($plugin, 'activate')) {
-                    echo "🚀 Activating plugin<br/>";
                     $plugin->activate();
                 }
 

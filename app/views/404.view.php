@@ -16,7 +16,7 @@
         <h1>404</h1>
         <p><strong><?= $message ?? 'Page Not Found' ?></strong></p>
         <p><strong>File:</strong> <code><?= $file ?? 'N/A' ?></code></p>
-        <a href="./" class="back-link">← Go Back Home</a>
+        <a href="../" class="back-link">← Go Back Home</a>
         <a target="_blank" href="./logs/error.log" class="back-link">← View Errors</a>
     </div>
 </body>
