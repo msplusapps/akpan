@@ -7,7 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Core\\' => array($baseDir . '/core'),
-    'App\\Plugins\\Auth\\' => array($baseDir . '/app/plugins/Auth'),
-    'App\\Plugins\\' => array($baseDir . '/app/plugins'),
     'App\\' => array($baseDir . '/app'),
 );

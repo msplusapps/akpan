@@ -20,8 +20,12 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/",
-      "Core\\": "core/",
-      "App\\Plugins\\": "app/plugins/"
+      "Core\\": "core/"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Plugins\\": "app/plugins/"
+        }
     }
   }
 }

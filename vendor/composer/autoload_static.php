@@ -13,8 +13,6 @@ class ComposerStaticInitd48f64ff668c9ad4ad2bb261a540e8ac
         ),
         'A' =>
         array (
-            'App\\Plugins\\Auth\\' => 17,
-            'App\\Plugins\\' => 12,
             'App\\' => 4,
         ),
     );
@@ -23,14 +21,6 @@ class ComposerStaticInitd48f64ff668c9ad4ad2bb261a540e8ac
         'Core\\' =>
         array (
             0 => __DIR__ . '/../..' . '/core',
-        ),
-        'App\\Plugins\\Auth\\' =>
-        array (
-            0 => __DIR__ . '/../..' . '/app/plugins/Auth',
-        ),
-        'App\\Plugins\\' =>
-        array (
-            0 => __DIR__ . '/../..' . '/app/plugins',
         ),
         'App\\' =>
         array (

@@ -21,6 +21,10 @@ class Router {
         return self::add('POST', $uri, $action);
     }
 
+    public static function getRoutes() {
+        return self::$routes;
+    }
+
     protected static function add($method, $uri, $action) {
         $uri = trim($uri, '/');
         foreach (self::$routes as $route) {
