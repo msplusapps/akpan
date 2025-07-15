@@ -1,6 +1,7 @@
 <?php
 
     function asset($path = '') {
+          echo "asset function is loaded";
         // Remove leading slashes and build full path
         $path = ltrim($path, '/');
 

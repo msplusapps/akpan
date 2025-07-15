@@ -1,3 +1,5 @@
+<?php if (!function_exists('asset')) { echo "❌ asset() not found"; exit; } ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
