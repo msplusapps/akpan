@@ -9,7 +9,7 @@ class AuthPlugin extends Plugin {
     public function __construct() {
         $this->name = 'Auth';
         $this->version = '1.0';
-        $this->author = 'Jules';
+        echo $this->author = 'Mr Promise Peter';
         $this->description = 'A simple authentication system.';
     }
 
