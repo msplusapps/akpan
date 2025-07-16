@@ -41,8 +41,8 @@
     }
 
 
-    function get_header($tree="web", $name= 'header') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_header($tree="views/web", $name= 'header') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -50,8 +50,8 @@
         }
     }
 
-    function get_footer($tree="web", $name = 'footer') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_footer($tree="views/web", $name = 'footer') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -59,8 +59,8 @@
         }
     }
 
-    function get_navbar($tree="web", $name = 'navbar') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_navbar($tree="views/web", $name = 'navbar') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -68,8 +68,8 @@
         }
     }
 
-    function get_sidebar($tree="web", $name = 'sidebar') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_sidebar($tree="views/web", $name = 'sidebar') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {

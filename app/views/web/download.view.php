@@ -1,4 +1,4 @@
-<?php get_header("web"); ?>
+<?php get_header(); ?>
 
 <!-- Hero Section -->
 <section class="gradient-bg text-white py-24">
@@ -40,4 +40,4 @@
     </div>
 </section>
 
-<?php get_footer("web"); ?>
+<?php get_footer(); ?>

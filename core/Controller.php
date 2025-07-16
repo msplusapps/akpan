@@ -26,7 +26,7 @@ class Controller {
         // Check if the view is in a plugin
         if (strpos($view, '@') !== false) {
             list($plugin, $view) = explode('@', $view);
-            echo $path = "app/plugins/{$plugin}/views/{$view}.view.php";
+            $path = "app/plugins/{$plugin}/views/{$view}.view.php";
         } else {
             $path = "app/views/{$view}.view.php";
         }

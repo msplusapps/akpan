@@ -1,4 +1,4 @@
-<?php get_header("web"); ?>
+<?php get_header(); ?>
 
 <!-- About Hero Section -->
 <section class="gradient-bg text-white py-24">
