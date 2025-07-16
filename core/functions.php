@@ -1,15 +1,21 @@
 <?php
 
     function asset($path = '') {
-          echo "asset function is loaded";
-        // Remove leading slashes and build full path
+        // Normalize path
         $path = ltrim($path, '/');
 
-        // Optional: use env BASE_URL if defined
-        $baseUrl = $_ENV['BASE_URL'] ?? '';
-        
-        return rtrim($baseUrl, '/') . "/public/{$path}";
+        // If BASE_URL is defined, use it. Else fallback to calculated base URL.
+        $baseUrl = $_ENV['BASE_URL'] ?? dirname($_SERVER['SCRIPT_NAME']);
+
+        // Ensure trailing slash
+        $baseUrl = rtrim($baseUrl, '/') . '/';
+
+        // Construct full URL
+        $fullUrl = $baseUrl . 'public/' . $path;
+
+        return $fullUrl;
     }
+
 
 
     function money($t, $len = 0, $base = 'NGN'){
@@ -35,8 +41,8 @@
     }
 
 
-    function get_header($tree="web", $name= 'header') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_header($tree="views/web", $name= 'header') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -44,8 +50,8 @@
         }
     }
 
-    function get_footer($tree="web", $name = 'footer') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_footer($tree="views/web", $name = 'footer') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -53,8 +59,8 @@
         }
     }
 
-    function get_navbar($tree="web", $name = 'navbar') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_navbar($tree="views/web", $name = 'navbar') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {
@@ -62,8 +68,8 @@
         }
     }
 
-    function get_sidebar($tree="web", $name = 'sidebar') {
-        $path = __DIR__ ."/../app/views/{$tree}/partials/{$name}.partial.php";
+    function get_sidebar($tree="views/web", $name = 'sidebar') {
+        $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
         if (file_exists($path)) {
             require $path;
         } else {

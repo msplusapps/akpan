@@ -3,7 +3,7 @@
 use Core\Plugin;
 use Core\Router;
 
-class ImageResizerPlugin extends Plugin {
+class ImageResizer extends Plugin {
 
     public function __construct() {
         $this->name = 'ImageResizer';

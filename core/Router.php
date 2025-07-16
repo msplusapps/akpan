@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class Router {
@@ -8,6 +9,7 @@ class Router {
         foreach (glob("app/middlewares/*.php") as $middlewareFile) {
             require_once $middlewareFile;
         }
+
         foreach (glob("$folder/*.php") as $routeFile) {
             require_once $routeFile;
         }
@@ -27,10 +29,18 @@ class Router {
 
     protected static function add($method, $uri, $action) {
         $uri = trim($uri, '/');
+
         foreach (self::$routes as $route) {
             if ($route->uri === $uri && $route->method === strtoupper($method)) {
+                self::debug("🟠 Duplicate route warning: {$method} '{$uri}' defined more than once.");
                 trigger_error("Duplicate route found for method {$method} and URI '{$uri}'.", E_USER_WARNING);
             }
+        }
+
+        // Support shorthand: ['Controller@method']
+        if (is_array($action) && count($action) === 1 && str_contains($action[0], '@')) {
+            [$controller, $methodName] = explode('@', $action[0]);
+            $action = [$controller, $methodName];
         }
 
         $route = new self($method, $uri, $action);
@@ -43,7 +53,6 @@ class Router {
 
         static $loaded = false;
         if (!$loaded) {
-            // Load plugin routes first
             if (isset($pluginManager)) {
                 foreach ($pluginManager->getPlugins() as $plugin) {
                     if (method_exists($plugin, 'registerRoutes')) {
@@ -52,7 +61,6 @@ class Router {
                 }
             }
 
-            // Then load core routes
             self::loadRoutes();
             $loaded = true;
         }
@@ -66,14 +74,6 @@ class Router {
 
         $requestPath = trim($requestPath, '/');
         $method = $_SERVER['REQUEST_METHOD'];
-
-        // Show all routes
-        foreach (self::$routes as $r) {
-            $m = strtoupper($r->method);
-            $u = $r->uri;
-            $a = is_array($r->action) ? implode('@', $r->action) : 'Closure';
-        }
-
         $prefixMatched = false;
 
         foreach (self::$routes as $route) {
@@ -84,8 +84,6 @@ class Router {
             }
 
             if ($definedRoute === $requestPath && $route->method === $method) {
-                self::debug("✅ Match found: {$method} /{$definedRoute}");
-
                 foreach ($route->middleware as $mw) {
                     if (function_exists($mw)) {
                         self::debug("🛡️ Running middleware: $mw");
@@ -96,19 +94,40 @@ class Router {
                 }
 
                 if (is_callable($route->action)) {
-                    self::debug("🔧 Calling closure action");
                     echo call_user_func($route->action);
                     return;
                 }
 
                 [$controller, $methodName] = $route->action;
-                $controllerPath = "app/controllers/{$controller}.php";
 
-                if (!file_exists($controllerPath)) {
-                    return self::fallback("❌ Controller file not found: $controllerPath", $requestPath);
+                if (is_string($controller) && str_contains($controller, '@')) {
+                    [$controller, $methodName] = explode('@', $controller);
                 }
 
-                require_once $controllerPath;
+                if (!class_exists($controller)) {
+                    $pluginGuess = ucfirst(explode('/', $requestPath)[0] ?? '');
+                    $guessedNamespace = "App\\Plugins\\{$pluginGuess}\\Controllers\\{$controller}";
+
+                    if (class_exists($guessedNamespace)) {
+                        $controller = $guessedNamespace;
+                    }
+                }
+
+                $isPlugin = str_contains($controller, '\\Plugins\\');
+                $controllerFile = '';
+
+                if ($isPlugin) {
+                    $controllerFile = 'app/' . str_replace(['App\\', '\\'], ['', '/'], $controller) . '.php';
+                } else {
+                    $controllerFile = "app/controllers/{$controller}.php";
+                    $controller = "App\\Controllers\\{$controller}";
+                }
+
+                if (!file_exists($controllerFile)) {
+                    return self::fallback("❌ Controller file not found: $controllerFile", $requestPath);
+                }
+
+                require_once $controllerFile;
 
                 if (!class_exists($controller)) {
                     return self::fallback("❌ Controller class not found: {$controller}", $requestPath);
@@ -120,13 +139,12 @@ class Router {
                     return self::fallback("❌ Method '{$methodName}' not found in '{$controller}'", $requestPath);
                 }
 
-                self::debug("🔧 Executing: {$controller}::{$methodName}()");
                 return call_user_func([$instance, $methodName]);
             }
         }
 
         if ($prefixMatched) {
-            return self::fallback("⚠️ No exact route found for '{$requestPath}', but similar prefix exists.", $requestPath);
+            // return self::fallback("⚠️ No exact route match for '{$requestPath}', but prefix matched.", $requestPath);
         }
 
         return self::fallback("❌ Route not found: '{$requestPath}'", $requestPath);
@@ -134,16 +152,19 @@ class Router {
 
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
-        require_once "app/controllers/_404Controller.php";
-        (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
+        if (file_exists("app/controllers/_404Controller.php")) {
+            require_once "app/controllers/_404Controller.php";
+            (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
+        } else {
+            echo "<h1>404 Not Found</h1><p>$msg</p>";
+        }
     }
 
-    protected static function debug($text){
+    protected static function debug($text) {
         if (function_exists('env') && env('DEBUG') === 'true') {
             echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
         }
     }
-
 
     protected $method;
     protected $uri;
@@ -152,7 +173,7 @@ class Router {
     public $name;
 
     private function __construct($method, $uri, $action) {
-        $this->method = $method;
+        $this->method = strtoupper($method);
         $this->uri = $uri;
         $this->action = $action;
     }

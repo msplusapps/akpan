@@ -7,7 +7,7 @@ use App\Plugins\Auth\Models\User;
 
 class AuthController extends Controller {
 
-    public function login() {
+    public function signin() {
         if ($this->isPost()) {
             $user = User::findOne(['username' => $this->input('username')]);
 

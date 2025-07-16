@@ -5,7 +5,7 @@ namespace App\Plugins\RouteDebugger;
 use Core\Plugin;
 use Core\Router;
 
-class RouteDebuggerPlugin extends Plugin
+class RouteDebugger extends Plugin
 {
 
     public function __construct()
