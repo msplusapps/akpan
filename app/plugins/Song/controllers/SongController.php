@@ -8,9 +8,9 @@ use App\Plugins\Song\Models\Song;
 class SongController extends Controller {
 
     public function index() {
-        echo "songController is connected";
+        // echo "songController is connected";
         // $songs = Song::all(); // Fetch all songs
-        $this->view('Song/index');
+        $this->view('Song@index');
     }
 
     public function create() {
