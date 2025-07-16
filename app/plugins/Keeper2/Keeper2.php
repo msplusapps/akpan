@@ -11,7 +11,7 @@ namespace App\Plugins\Keeper;
 use Core\Plugin;
 use Core\Router;
 
-class Keeper extends Plugin
+class Keeper2 extends Plugin
 {
     public function activate()
     {

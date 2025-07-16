@@ -3,7 +3,7 @@
 use Core\Controller;
 use App\Models\User;
 
-class AdminController extends Controller
+class Admin_Controller extends Controller
 {
     public function __construct()
     {
