@@ -22,7 +22,6 @@ class Controller {
      */
    public function view($view, $data = []){
         extract($data);
-
         // Check if the view is in a plugin
         if (strpos($view, '@') !== false) {
             list($plugin, $view) = explode('@', $view);

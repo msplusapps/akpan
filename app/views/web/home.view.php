@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+ get_header(); ?>
+
     <!-- Hero Section -->
     <section class="gradient-bg text-white pt-32 pb-20">
         <div class="container mx-auto px-6 text-center">

@@ -3,14 +3,12 @@
 namespace App\Controllers;
 
 use Core\Controller;
-use Core\Utils\Memstack;
 
-class WebController extends Controller{
+class PluginsController extends Controller{
     public function index(){
-        $this->view('web/home', [
+        $this->view('tools/plugins', [
             'title' => 'Welcome Home',
-            'message' => 'This is the homepage.',
-            'memstack' => new Memstack(120)
+            'message' => 'This is the homepage.'
         ]);
     }
 

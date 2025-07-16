@@ -40,6 +40,9 @@
         return dirname(__DIR__) . '/' . ltrim($path, '/');
     }
 
+    function plugins_path($path = '') {
+        return base_path('app/Plugins/' . ltrim($path, '/'));
+    }
 
     function get_header($tree="views/web", $name= 'header') {
         $path = __DIR__ ."/../app/{$tree}/partials/{$name}.partial.php";
