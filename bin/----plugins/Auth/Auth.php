@@ -9,6 +9,8 @@ use Core\Model;
 
 class AuthPlugin extends Plugin {
 
+    public $idd = 0;
+
     public function __construct() {
         $this->name = 'Auth';
         $this->version = '1.0';
@@ -25,11 +27,12 @@ class AuthPlugin extends Plugin {
     }
 
 
-    private function registerRoutes() {
-        Router::get('/auth/login', 'AuthController@login');
-        Router::post('/auth/login', 'AuthController@login');
-        Router::get('/auth/register', 'AuthController@register');
-        Router::post('/auth/register', 'AuthController@register');
-        Router::get('/auth/logout', 'AuthController@logout');
+    public function registerRoutes() {
+        echo $this->idd++;
+        Router::get('/auth/signin', 'AuthController@signin');
+        // Router::post('/auth/login', 'AuthController@login');
+        // Router::get('/auth/register', 'AuthController@register');
+        // Router::post('/auth/register', 'AuthController@register');
+        // Router::get('/auth/logout', 'AuthController@logout');
     }
 }

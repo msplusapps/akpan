@@ -85,7 +85,6 @@ class Migrations extends Database
         $pluginMigrationsPath = base_path('/app/plugins/') . $pluginName . '/migrations';
 
         if (!is_dir($pluginMigrationsPath)) {
-            $this->logConsole("⚠️ No migrations directory found for plugin: $pluginName");
             return;
         }
 

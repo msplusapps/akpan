@@ -1,11 +1,11 @@
 <?php
 
+namespace App\Controllers;
+
 use Core\Controller;
 
-class WebController extends Controller
-{
-    public function index()
-    {
+class WebController extends Controller{
+    public function index(){
         $this->view('web/home', [
             'title' => 'Welcome Home',
             'message' => 'This is the homepage.'

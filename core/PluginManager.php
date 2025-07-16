@@ -6,30 +6,22 @@ use Core\Migrations;
 
 class PluginManager {
 
-    /**
-     * @var array A list of all available plugins
-     */
-    private $plugins = [];
-
-    /**
-     * @var string The directory where plugins are stored
-     */
-    private $pluginDir;
+    private array $plugins = [];
+    private array $loadedPlugins = [];
+    private array $activationCount = [];
+    private array $loadCount = [];
+    private string $pluginDir;
 
     public function __construct($pluginDir) {
         $this->pluginDir = $pluginDir;
     }
 
-    /**
-     * Discover all available plugins
-     */
-    public function discoverPlugins(){
+    public function discoverPlugins() {
         if (!is_dir($this->pluginDir)) {
-            echo "❌ Plugin directory does not exist.<br/>";
+            $this->debug("❌ Plugin directory not found: {$this->pluginDir}");
             return;
         }
 
-        // Parse request path (e.g. /auth/login)
         $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
         $requestPath = trim(parse_url($requestUri, PHP_URL_PATH), '/');
         $requestSegments = explode('/', $requestPath);
@@ -37,84 +29,100 @@ class PluginManager {
 
         foreach (glob($this->pluginDir . '/*', GLOB_ONLYDIR) as $dir) {
             $pluginName = basename($dir);
+            $expectedFile = "{$dir}/{$pluginName}.php";
+            $className = "App\\Plugins\\{$pluginName}\\{$pluginName}";
 
-            // Only continue if this plugin matches the first part of the URI
+            // Skip if it's not the plugin we want
             if ($pluginName !== $targetPlugin) {
                 continue;
             }
 
-            $className = "App\\Plugins\\{$pluginName}\\{$pluginName}Plugin";
-            $expectedFile = "{$dir}/{$pluginName}Plugin.php";
+            // Debug load attempt
+            $this->loadCount[$pluginName] = ($this->loadCount[$pluginName] ?? 0) + 1;
+            $this->debug("🔍 Scanning Plugin: {$pluginName} (Load count: {$this->loadCount[$pluginName]})");
 
+            // Prevent duplicate loading
+            if (in_array($pluginName, $this->loadedPlugins)) {
+                $this->debug("⚠️ Plugin '{$pluginName}' already loaded. Skipping. File: {$expectedFile}");
+                break;
+            }
+
+            // Check if plugin file exists
             if (!file_exists($expectedFile)) {
-                echo "❌ Plugin file not found at: {$expectedFile}<br/>";
-                return;
+                $this->debug("❌ Plugin file not found: {$expectedFile}");
+                break;
             }
 
+            // Try including the plugin file
             require_once $expectedFile;
+            $this->debug("📄 Included plugin file: {$expectedFile}");
 
-            if (class_exists($className)) {
-                $plugin = new $className();
-                $this->plugins[] = $plugin;
-
-                if (method_exists($plugin, 'register')) {
-                    echo "📌 Calling register()<br/>";
-                    $plugin->register();
-                }
-
-                if (method_exists($plugin, 'activate')) {
-                    $plugin->activate();
-                }
-
-                if (class_exists(Migrations::class)) {
-                    echo "🗂️ Running migrations for plugin: {$pluginName}<br/>";
-                    $migrations = new Migrations();
-                    $migrations->runPluginMigrations($pluginName);
-                }
-            } else {
-                echo "❌ Plugin class not found: {$className}<br/>";
+            // Check if the plugin class exists
+            if (!class_exists($className)) {
+                $this->debug("❌ Plugin class not found: {$className}");
+                break;
             }
 
-            break; // Stop after first match
+            // Instantiate and store the plugin
+            $plugin = new $className();
+            $this->plugins[] = $plugin;
+            $this->loadedPlugins[] = $pluginName;
+            $this->debug("✅ Plugin instantiated: {$pluginName}");
+
+            // Register plugin (optional)
+            if (method_exists($plugin, 'register')) {
+                $this->debug("📌 Registering routes for plugin: {$pluginName}");
+                $plugin->register();
+            }
+
+            // Activate plugin
+            if (method_exists($plugin, 'activate')) {
+                $this->activationCount[$pluginName] = ($this->activationCount[$pluginName] ?? 0) + 1;
+                $this->debug("🚀 Activating plugin '{$pluginName}' [Times Activated: {$this->activationCount[$pluginName]}]");
+                $plugin->activate();
+            }
+
+            // Run migrations
+            if (class_exists(Migrations::class)) {
+                $this->debug("🗂️ Running migrations for: {$pluginName}");
+                $migrations = new Migrations();
+                $migrations->runPluginMigrations($pluginName);
+            }
+
+            break; // ✅ Only process the first matched plugin
         }
+
     }
 
-
-
-    /**
-     * Get a list of all available plugins
-     *
-     * @return array
-     */
-    public function getPlugins() {
+    public function getPlugins(): array {
         return $this->plugins;
     }
 
-    /**
-     * Activate a plugin
-     *
-     * @param string $pluginName The name of the plugin to activate
-     */
-    public function activatePlugin($pluginName) {
+    public function activatePlugin(string $pluginName): void {
         foreach ($this->plugins as $plugin) {
-            if ($plugin->getName() === $pluginName) {
+            if ($plugin->getName() === $pluginName && method_exists($plugin, 'activate')) {
+                if (!isset($this->activationCount[$pluginName])) {
+                    $this->activationCount[$pluginName] = 0;
+                }
+                $this->activationCount[$pluginName]++;
+                $this->debug("🛠 Manually activating plugin: {$pluginName} [Activation count: {$this->activationCount[$pluginName]}]");
                 $plugin->activate();
-                // Here you would typically store the activation status in a database or a file
             }
         }
     }
 
-    /**
-     * Deactivate a plugin
-     *
-     * @param string $pluginName The name of the plugin to deactivate
-     */
-    public function deactivatePlugin($pluginName) {
+    public function deactivatePlugin(string $pluginName): void {
         foreach ($this->plugins as $plugin) {
-            if ($plugin->getName() === $pluginName) {
+            if ($plugin->getName() === $pluginName && method_exists($plugin, 'deactivate')) {
+                $this->debug("🛑 Deactivating plugin: {$pluginName}");
                 $plugin->deactivate();
-                // Here you would typically update the activation status
             }
+        }
+    }
+
+    private function debug(string $message): void {
+        if (getenv('DEBUG') === 'true' || ($_ENV['DEBUG'] ?? 'false') === 'true') {
+            echo "<pre style='background:#222;color:#ffb700;padding:6px;margin:4px 0;border-left:4px solid orange'>{$message}</pre>";
         }
     }
 }

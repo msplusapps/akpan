@@ -4,7 +4,7 @@ namespace App\Plugins\Example;
 
 use Core\Plugin;
 
-class ExamplePlugin extends Plugin {
+class Example extends Plugin {
 
     public function __construct() {
         $this->name = 'Example Plugin';
