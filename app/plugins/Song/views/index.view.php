@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Clone - Song List</title>
+    <title>Akpan MVC - Song List</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -46,7 +46,7 @@
         <div class="hidden md:flex md:flex-col w-64 bg-black p-6 space-y-6 border-r border-gray-800">
             <div class="flex items-center space-x-2">
                 <i class="fab fa-spotify text-3xl text-green-500"></i>
-                <span class="text-xl font-bold">Spotify</span>
+                <span class="text-xl font-bold">Akpan MVC</span>
             </div>
             
             <div class="space-y-4">
