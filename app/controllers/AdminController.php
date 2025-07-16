@@ -44,4 +44,25 @@ class AdminController extends Controller
         session_destroy();
         redirect('auth/login');
     }
+
+    public function cache()
+    {
+        return $this->view('admin/cache');
+    }
+
+    public function updateCache()
+    {
+        if (isset($_POST['cache_enabled'])) {
+            Core\Utils\Cache::enable();
+        } else {
+            Core\Utils\Cache::disable();
+        }
+        redirect('admin/cache');
+    }
+
+    public function clearCache()
+    {
+        Core\Utils\Cache::clear();
+        redirect('admin/cache');
+    }
 }

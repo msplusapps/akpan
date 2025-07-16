@@ -13,6 +13,7 @@
                  <a href="./download" class="nav-link">Download</a>
                  <a href="./about" class="nav-link">About Us</a>
                  <a href="./contact" class="nav-link">Contact Us</a>
+                 <a href="<?= url('admin/cache') ?>" class="nav-link">Cache</a>
              </div>
              <div class="md:hidden">
                  <button id="menu-btn" class="text-white focus:outline-none">
