@@ -55,6 +55,20 @@ class AdminController extends Controller
         ]);
     }
 
+    public function middlewares()
+    {
+        return $this->view('admin/middlewares', [
+            'title' => 'Admin middlewares'
+        ]);
+    }
+
+    public function migrations()
+    {
+        return $this->view('admin/migrations', [
+            'title' => 'Admin migrations'
+        ]);
+    }
+
     public function controllers()
     {
         $routes = \Core\Router::all();

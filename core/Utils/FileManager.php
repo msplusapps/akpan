@@ -82,6 +82,17 @@ class FileManager {
         }
     }
 
+    public static function getFiles($dir)
+    {
+        $files = [];
+        if (is_dir($dir)) {
+            foreach (glob("$dir/*.php") as $file) {
+                $files[] = $file;
+            }
+        }
+        return $files;
+    }
+
 }
 
 

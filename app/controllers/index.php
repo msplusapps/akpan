@@ -1,4 +1,5 @@
 <?php
-// Redirect to home if accessed directly
-header("Location: ../");
-exit;
+    ob_start();
+    header("Location: /admin/dashboard");
+    exit;
+    ob_end_flush();

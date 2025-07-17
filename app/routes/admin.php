@@ -17,6 +17,12 @@ Router::post("admin/plugins/store", ['AdminController', 'createNewPlugin'])->mid
 Router::get("admin/routes", ['AdminController', 'routes'])->middleware('auth');
 
 
+Router::get("admin/migrations", ['AdminController', 'migrations'])->middleware('auth');
+
+
+Router::get("admin/middlewares", ['AdminController', 'middlewares'])->middleware('auth');
+
+
 Router::get("admin/controllers", ['AdminController', 'controllers'])->middleware('auth');
 
 

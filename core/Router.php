@@ -20,6 +20,11 @@ class Router {
         foreach (glob("$folder/*.php") as $routeFile) {
             require_once $routeFile;
         }
+
+        // Load plugin routes
+        foreach (glob('app/plugins/*/routes/*.php') as $pluginRouteFile) {
+            require_once $pluginRouteFile;
+        }
     }
 
     public static function get($uri, $action) {

@@ -25,6 +25,8 @@
             }, $routes);
 
             foreach ($allControllers as $file) {
+                if (basename($file) === 'index.php') continue; // Skip index.php
+
                 require_once $file;
 
                 $className = get_declared_classes()[array_key_last(get_declared_classes())];
@@ -47,7 +49,7 @@
                 }
                 echo "</ul></div>";
             }
-        ?>
+            ?>
         </div>
     </section>
 
