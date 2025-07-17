@@ -10,6 +10,7 @@
                  <a href="./features" class="nav-link">Features</a>
                  <a href="./documentation" class="nav-link">Documentation</a>
                  <a href="./community" class="nav-link">Community</a>
+                 <a href="./plugins" class="nav-link">Plugins</a>
                  <a href="./download" class="nav-link">Download</a>
                  <a href="./about" class="nav-link">About Us</a>
                  <a href="./contact" class="nav-link">Contact Us</a>

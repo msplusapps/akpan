@@ -39,4 +39,4 @@
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
-   <?php get_navbar(); ?>
+   <?php get_navbar("/web/"); ?>

@@ -4,6 +4,7 @@ namespace Core;
 
 class Router {
     protected static $routes = [];
+    protected static $loadedControllers = [];
 
     public static function loadRoutes($folder = 'app/routes') {
         foreach (glob("app/middlewares/*.php") as $middlewareFile) {
@@ -37,7 +38,7 @@ class Router {
             }
         }
 
-        // Support shorthand: ['Controller@method']
+        // Shorthand: ['Controller@method']
         if (is_array($action) && count($action) === 1 && str_contains($action[0], '@')) {
             [$controller, $methodName] = explode('@', $action[0]);
             $action = [$controller, $methodName];
@@ -94,23 +95,16 @@ class Router {
                 }
 
                 if (is_callable($route->action)) {
+                    self::debug("⚙️ Executing callable route action.");
                     echo call_user_func($route->action);
                     return;
                 }
 
                 [$controller, $methodName] = $route->action;
 
+                // Laravel-style fallback
                 if (is_string($controller) && str_contains($controller, '@')) {
                     [$controller, $methodName] = explode('@', $controller);
-                }
-
-                if (!class_exists($controller)) {
-                    $pluginGuess = ucfirst(explode('/', $requestPath)[0] ?? '');
-                    $guessedNamespace = "App\\Plugins\\{$pluginGuess}\\Controllers\\{$controller}";
-
-                    if (class_exists($guessedNamespace)) {
-                        $controller = $guessedNamespace;
-                    }
                 }
 
                 $isPlugin = str_contains($controller, '\\Plugins\\');
@@ -123,11 +117,19 @@ class Router {
                     $controller = "App\\Controllers\\{$controller}";
                 }
 
-                if (!file_exists($controllerFile)) {
-                    return self::fallback("❌ Controller file not found: $controllerFile", $requestPath);
-                }
+                // Only include controller file once
+                if (!class_exists($controller)) {
+                    if (!file_exists($controllerFile)) {
+                        return self::fallback("❌ Controller file not found: $controllerFile", $requestPath);
+                    }
 
-                require_once $controllerFile;
+                    if (!in_array($controllerFile, self::$loadedControllers)) {
+                        require_once $controllerFile;
+                        self::$loadedControllers[] = $controllerFile;
+                    } else {
+                        self::debug("⚠️ Skipped already loaded controller: $controllerFile");
+                    }
+                }
 
                 if (!class_exists($controller)) {
                     return self::fallback("❌ Controller class not found: {$controller}", $requestPath);
@@ -138,13 +140,12 @@ class Router {
                 if (!method_exists($instance, $methodName)) {
                     return self::fallback("❌ Method '{$methodName}' not found in '{$controller}'", $requestPath);
                 }
-
                 return call_user_func([$instance, $methodName]);
             }
         }
 
         if ($prefixMatched) {
-            // return self::fallback("⚠️ No exact route match for '{$requestPath}', but prefix matched.", $requestPath);
+            self::debug("⚠️ Prefix matched for '{$requestPath}', but no exact match found.");
         }
 
         return self::fallback("❌ Route not found: '{$requestPath}'", $requestPath);
@@ -152,6 +153,7 @@ class Router {
 
     protected static function fallback($msg, $requestUri = '') {
         self::debug("🟥 404 Error: $msg");
+
         if (file_exists("app/controllers/_404Controller.php")) {
             require_once "app/controllers/_404Controller.php";
             (new \App\Controllers\_404Controller)->index([$msg, __FILE__, $requestUri]);
@@ -162,7 +164,7 @@ class Router {
 
     protected static function debug($text) {
         if (function_exists('env') && env('DEBUG') === 'true') {
-            echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid white;'>$text</pre><br/>";
+            echo "<pre style='color: white; background:#222; padding:8px 12px; font-size:13px; margin-bottom:6px; border-left: 4px solid lime;'>$text</pre>";
         }
     }
 
