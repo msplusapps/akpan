@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers;
+
 use Core\Controller;
+use App\Models\User;
+use Core\Security;
 
-
-class AuthController extends Controller
-{
+class AuthController extends Controller{
     public function index()
     {
         return $this->view('auth/signin');
@@ -37,9 +38,9 @@ class AuthController extends Controller
         $userModel = new User();
         $user = $userModel->findOne($username, "email");
 
-        show($user['password']);
+        show($user);
 
-        if (!$user || decrypt($user['password']) !== $password) {
+        if (!$user || Security::decrypt($user['password']) !== $password) {
             return $this->view('auth/signin', [
                 'error' => 'Invalid credentials.',
                 'old'   => $_POST
@@ -109,7 +110,7 @@ class AuthController extends Controller
             'name'     => $name,
             'email'    => $email,
             'username' => $username,
-            'password' => $password
+            'password' => Security::encrypt($password)
         ]);
 
         if (!$success) {

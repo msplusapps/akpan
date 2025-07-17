@@ -45,7 +45,7 @@
         </div>
     </div>
 </footer>
-
+<script src="<?=asset("libs/jquery-3.6.0.min.js")?>"></script>
 <script>
     // Mobile menu toggle
     document.getElementById('menu-btn').addEventListener('click', function() {

@@ -5,6 +5,12 @@ namespace Core;
 class Router {
     protected static $routes = [];
     protected static $loadedControllers = [];
+    protected $method;
+    protected $uri;
+    protected $action;
+    public $middleware = [];
+    public $name;
+    
 
     public static function loadRoutes($folder = 'app/routes') {
         foreach (glob("app/middlewares/*.php") as $middlewareFile) {
@@ -87,7 +93,6 @@ class Router {
             if ($definedRoute === $requestPath && $route->method === $method) {
                 foreach ($route->middleware as $mw) {
                     if (function_exists($mw)) {
-                        self::debug("🛡️ Running middleware: $mw");
                         call_user_func($mw);
                     } else {
                         self::debug("⚠️ Middleware '$mw' not found.");
@@ -168,12 +173,6 @@ class Router {
         }
     }
 
-    protected $method;
-    protected $uri;
-    protected $action;
-    public $middleware = [];
-    public $name;
-
     private function __construct($method, $uri, $action) {
         $this->method = strtoupper($method);
         $this->uri = $uri;
@@ -188,5 +187,25 @@ class Router {
     public function name($name) {
         $this->name = $name;
         return $this;
+    }
+
+    public static function all() {
+        return self::$routes;
+    }
+
+    public function getMethod() {
+        return $this->method;
+    }
+
+    public function getUri() {
+        return $this->uri;
+    }
+
+    public function getAction() {
+        return $this->action;
+    }
+
+    public function getMiddleware() {
+        return $this->middleware;
     }
 }

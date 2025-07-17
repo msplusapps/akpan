@@ -67,4 +67,5 @@ class Song extends Model
     {
         return (new static)->delete($id);
     }
+
 }
