@@ -6,7 +6,7 @@
  * Description: This is a plugin. It comes with routes, controllers, and a migrations file.
  */
 
-namespace App\Plugins\Song;
+namespace App\Plugins;
 
 use Core\Plugin;
 use Core\Router;

@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header("views/tools"); ?>
 
 <!-- About Hero Section -->
 <section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-24">
@@ -69,4 +69,4 @@ foreach (scandir($pluginBase) as $folder) {
     </div>
 </section>
 
-<?php get_footer(); ?>
+<?php get_footer("views/tools"); ?>
