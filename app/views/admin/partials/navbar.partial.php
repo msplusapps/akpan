@@ -10,7 +10,9 @@
                  <a href="<?= url('./auth/logout') ?>" class="nav-link">
                     <i class="fas fa-sign-out-alt"></i>
                  </a>
-                 <a href="<?= url('admin/profile') ?>" class="nav-link">Promise Peter Akpan</a>
+                 <a href="<?= url('admin/profile') ?>" class="nav-link">
+                    <?= $_SESSION['user']['username'];?>
+                 </a>
              </div>
              <div class="md:hidden">
                  <button id="menu-btn" class="text-white focus:outline-none">
