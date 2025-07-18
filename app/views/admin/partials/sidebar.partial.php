@@ -7,6 +7,7 @@
         <a href="<?= url('./admin/plugins')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Plugins</a>
         <a href="<?= url('./admin/migrations')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Migrations</a>
         <a href="<?= url('./admin/middlewares')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Middlewares</a>
-        <a href="<?= url('./admin/settings')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Settings</a>
+        <a href="<?= url('./admin/users')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Users</a>
+        <a href="<?= url('./admin/assets')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Assets</a>
     </nav>
 </aside>

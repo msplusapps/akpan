@@ -84,7 +84,15 @@ class AdminController extends Controller
         $users = $userModel->all();
 
         return $this->view('admin/users', [
+            'title' => 'Registered Users',
             'users' => $users
+        ]);
+    }
+
+    public function assets()
+    {
+        return $this->view('admin/assets', [
+            'title' => 'Registered Assets'
         ]);
     }
 
