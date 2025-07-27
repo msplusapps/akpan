@@ -1,3 +1,4 @@
+<?php
 
 </div>
 <!-- Footer -->
@@ -47,27 +48,22 @@
         </div>
     </div>
 </footer>
-
 <script>
     // Mobile menu toggle
     document.getElementById('menu-btn').addEventListener('click', function() {
         const menu = document.getElementById('mobile-menu');
         menu.classList.toggle('hidden');
     });
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
                 // Close mobile menu if open
                 const menu = document.getElementById('mobile-menu');
                 menu.classList.add('hidden');
-
                 // Scroll to target
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
@@ -76,7 +72,6 @@
             }
         });
     });
-
     // Add shadow to navbar on scroll
     window.addEventListener('scroll', function() {
         const nav = document.querySelector('nav');
@@ -88,5 +83,4 @@
     });
 </script>
 </body>
-
 </html>

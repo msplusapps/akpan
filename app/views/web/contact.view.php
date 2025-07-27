@@ -1,5 +1,6 @@
-<?php get_header("views/tools"); ?>
+<?php
 
+get_header("views/tools"); ?>
 <!-- Contact Hero -->
 <section class="gradient-bg text-white py-24">
     <div class="container mx-auto px-6 text-center">
@@ -7,7 +8,6 @@
         <p class="text-xl md:text-2xl max-w-2xl mx-auto">We’d love to hear from you — whether you have questions, feedback, or want to contribute to Akpan MVC.</p>
     </div>
 </section>
-
 <!-- Contact Form Section -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6 max-w-3xl">
@@ -29,7 +29,6 @@
         </form>
     </div>
 </section>
-
 <!-- Contact Info -->
 <section class="py-20 bg-gray-100">
     <div class="container mx-auto px-6 text-center">
@@ -53,5 +52,6 @@
         </div>
     </div>
 </section>
+<?php
 
-<?php get_footer("views/tools"); ?>
+get_footer("views/tools"); ?>

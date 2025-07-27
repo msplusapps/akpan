@@ -1,44 +1,35 @@
 <?php
 
 namespace App\Controllers;
-
 use Core\Controller;
 use Core\Utils\Memstack;
-
 class WebController extends Controller{
-    public function index(){
+    public function index() {
         $this->view('web/home', [
             'title' => 'Welcome Home',
             'message' => 'This is the homepage.',
             'memstack' => new Memstack(120)
         ]);
     }
-
-    public function about()
-    {
+    public function about() {
         $this->view('web/about', [
             'title' => 'About Us',
             'message' => 'We are building a custom MVC framework.'
         ]);
     }
-
-    public function documentation(){
+    public function documentation() {
         $this->view('web/documentation', [
             'title' => 'Documentation',
             'message' => 'We are building a custom MVC framework.'
         ]);
     }
-
-    public function download()
-    {
+    public function download() {
         $this->view('web/download', [
             'title' => 'download',
             'message' => 'We are building a custom MVC framework.'
         ]);
     }
-
-    public function contact()
-    {
+    public function contact() {
         $this->view('web/contact', [
             'title' => 'Contact Us',
             'email' => 'support@example.com'

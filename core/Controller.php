@@ -1,9 +1,7 @@
 <?php
 
 namespace Core;
-
 class Controller {
-
     /**
      * Load a model from app/models/
      */
@@ -16,45 +14,35 @@ class Controller {
             die("Model '{$model}' not found.");
         }
     }
-
     /**
      * Load a view from app/views/
      */
-   public function view($view, $data = []){
+   public function view($view, $data = []) {
         extract($data);
         // Check if the view is in a plugin
         if (strpos($view, '@') !== false) {
-            list($plugin, $view) = explode('@', $view);
+            list($plugin, $view) = explode("@", $view);
             $path = "app/plugins/{$plugin}/views/{$view}.view.php";
         } else {
             $path = "app/views/{$view}.view.php";
         }
-
         if (!file_exists($path)) {
             $errorMessage = "View file not found: {$path}";
             error_log("[VIEW ERROR] " . $errorMessage);
-
             // Fallback to a custom 404 view with message
             $message = $errorMessage;
             $file = $path;
-
             // Optional: you can define a default 404 view
             $fallbackView = "app/views/404.view.php";
-
             if (file_exists($fallbackView)) {
                 require_once $fallbackView;
             } else {
                 echo "<h2 style='color:red;'>$message</h2><p>$file</p>";
             }
-
             return;
         }
-
         require_once $path;
     }
-
-
-
     /**
      * Redirect to a different URL
      */
@@ -62,21 +50,18 @@ class Controller {
         header("Location: {$path}");
         exit;
     }
-
     /**
      * Check if the request is POST
      */
     public function isPost() {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
-
     /**
      * Check if the request is GET
      */
     public function isGet() {
         return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
-
     /**
      * Get sanitized input from $_POST or $_GET
      */
@@ -84,7 +69,6 @@ class Controller {
         $value = $_POST[$key] ?? $_GET[$key] ?? $default;
         return htmlspecialchars(trim($value));
     }
-
     /**
      * Generate and store CSRF token
      */
@@ -95,7 +79,6 @@ class Controller {
         }
         return $_SESSION['_csrf'];
     }
-
     /**
      * Validate CSRF token
      */

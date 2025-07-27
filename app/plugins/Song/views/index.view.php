@@ -1,4 +1,6 @@
-<?php get_header("Plugins/song/views")?>
+<?php
+
+get_header("Plugins/song/views")?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,18 +24,15 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
-        
         /* Animation for play button */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        
         .playing {
             animation: pulse 2s infinite;
         }
-        
         /* Gradient background */
         .gradient-bg {
             background: linear-gradient(180deg, rgba(18,18,18,0.8) 0%, rgba(18,18,18,1) 100%);
@@ -48,7 +47,6 @@
                 <i class="fab fa-spotify text-3xl text-green-500"></i>
                 <span class="text-xl font-bold">Akpan MVC</span>
             </div>
-            
             <div class="space-y-4">
                 <div class="text-gray-400 font-medium">MENU</div>
                 <ul class="space-y-3">
@@ -66,7 +64,6 @@
                     </li>
                 </ul>
             </div>
-            
             <div class="space-y-4">
                 <div class="text-gray-400 font-medium">PLAYLISTS</div>
                 <ul class="space-y-3">
@@ -80,7 +77,6 @@
                     </li>
                 </ul>
             </div>
-            
             <div class="border-t border-gray-800 pt-4">
                 <div class="text-gray-400 text-sm">
                     <div class="hover:text-white cursor-pointer">Legal</div>
@@ -89,7 +85,6 @@
                 </div>
             </div>
         </div>
-        
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
@@ -99,7 +94,7 @@
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                     <div class="relative">
-                        <input type="text" placeholder="Search for songs, artists..." 
+                        <input type="text" placeholder="Search for songs, artists..."
                                class="bg-white bg-opacity-10 rounded-full py-2 px-4 text-white placeholder-gray-400 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-green-500">
                         <i class="fas fa-search absolute right-3 top-2.5 text-gray-400"></i>
                     </div>
@@ -118,7 +113,6 @@
                     </div>
                 </div>
             </header>
-            
             <!-- Playlist Header -->
             <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-b from-purple-900 to-black opacity-60"></div>
@@ -140,7 +134,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Controls -->
             <div class="gradient-bg px-6 py-4 flex items-center space-x-6">
                 <button class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-400 transition transform hover:scale-105">
@@ -153,7 +146,6 @@
                     <i class="fas fa-ellipsis-h text-2xl"></i>
                 </button>
             </div>
-            
             <!-- Song List -->
             <div class="flex-1 overflow-y-auto px-6 pb-32">
                 <div class="grid grid-cols-12 border-b border-gray-800 py-2 px-4 text-gray-400 text-sm">
@@ -162,12 +154,10 @@
                     <div class="col-span-4 md:col-span-3">ALBUM</div>
                     <div class="col-span-2 md:col-span-1 text-right">DURATION</div>
                 </div>
-                
                 <div id="song-list" class="divide-y divide-gray-800">
                     <!-- Songs will be added here by JavaScript -->
                 </div>
             </div>
-            
             <!-- Player Bar -->
             <div class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 p-4" id="player-bar">
                 <div class="flex items-center justify-between">
@@ -181,7 +171,6 @@
                             <i class="far fa-heart"></i>
                         </button>
                     </div>
-                    
                     <div class="flex flex-col items-center w-2/4">
                         <div class="flex items-center space-x-6 mb-2">
                             <button class="text-gray-400 hover:text-white">
@@ -210,7 +199,6 @@
                             <span class="text-xs text-gray-400">3:45</span>
                         </div>
                     </div>
-                    
                     <div class="flex items-center justify-end space-x-3 w-1/4">
                         <button class="text-gray-400 hover:text-white">
                             <i class="fas fa-list"></i>
@@ -229,7 +217,6 @@
             </div>
         </div>
     </div>
-
     <script>
         // Current state
         let currentSongIndex = 0;
@@ -237,7 +224,6 @@
         let progressInterval;
         let currentTime = 0;
         let duration = 0;
-        
         // Sample song data
         const songs = [
             { id: 1, title: "Blinding Lights", artist: "The Weeknd", album: "After Hours", duration: "3:20", cover: "https://i.scdn.co/image/ab67616d00004851ff9ca10b55ce82ae553c8228", playing: true },
@@ -251,28 +237,23 @@
             { id: 9, title: "Butter", artist: "BTS", album: "Butter", duration: "2:42", cover: "https://i.scdn.co/image/ab67616d00004851d5f373d7beb1a9e3b1e3a5e6" },
             { id: 10, title: "Deja Vu", artist: "Olivia Rodrigo", album: "SOUR", duration: "3:35", cover: "https://i.scdn.co/image/ab67616d000048515d0dfa1feb1e8d2c9f7b1e5e" }
         ];
-
         // Player controls functions
         function parseTime(timeStr) {
             const [minutes, seconds] = timeStr.split(':').map(Number);
             return minutes * 60 + seconds;
         }
-
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
-
         function updateProgress() {
             if (currentTime < duration) {
                 currentTime += 1;
                 const progressPercent = (currentTime / duration) * 100;
-                
                 // Update progress bar
                 const progressBar = document.querySelector('#player-bar .bg-gray-400');
                 progressBar.style.width = `${progressPercent}%`;
-                
                 // Update current time display
                 const timeDisplay = document.querySelector('#player-bar .text-xs:first-child');
                 timeDisplay.textContent = formatTime(currentTime);
@@ -280,66 +261,54 @@
                 playNextSong();
             }
         }
-
         function playSong(index) {
             // Clear any existing interval
             clearInterval(progressInterval);
-            
             // Update current song index
             currentSongIndex = index;
             const song = songs[index];
-            
             // Parse duration and reset current time
             duration = parseTime(song.duration);
             currentTime = 0;
-            
             // Update player bar
             const playerBar = document.getElementById('player-bar');
             playerBar.querySelector('img').src = song.cover;
             playerBar.querySelector('.player-info div:first-child').textContent = song.title;
             playerBar.querySelector('.player-info div:last-child').textContent = song.artist;
-            
             // Reset progress bar and timer
             const progressBar = playerBar.querySelector('.bg-gray-400');
             progressBar.style.width = '0%';
             playerBar.querySelector('.text-xs:first-child').textContent = '0:00';
             playerBar.querySelector('.text-xs:last-child').textContent = song.duration;
-            
             // Update play/pause button
             const playPauseBtn = playerBar.querySelector('.play-pause-btn i');
             playPauseBtn.classList.remove('fa-play');
             playPauseBtn.classList.add('fa-pause');
             isPlaying = true;
-            
             // Update song list
             document.querySelectorAll('#song-list div').forEach(el => el.classList.remove('text-green-500'));
             document.querySelectorAll('#song-list i').forEach(el => {
                 el.classList.remove('fa-volume-up', 'playing');
                 el.classList.add('fa-play');
             });
-            
             const songElement = document.querySelector(`#song-list div:nth-child(${index + 1})`);
             songElement.classList.add('text-green-500');
             const icon = songElement.querySelector('i');
             icon.classList.remove('fa-play');
             icon.classList.add('fa-volume-up', 'playing');
         }
-        
         function pauseSong() {
             const playerBar = document.getElementById('player-bar');
             const playPauseBtn = playerBar.querySelector('.play-pause-btn i');
             playPauseBtn.classList.remove('fa-pause');
             playPauseBtn.classList.add('fa-play');
             isPlaying = false;
-            
             const songElement = document.querySelector(`#song-list div:nth-child(${currentSongIndex + 1})`);
             const icon = songElement.querySelector('i');
             icon.classList.remove('playing');
-            
             // Clear progress interval
             clearInterval(progressInterval);
         }
-        
         function togglePlayPause() {
             if (isPlaying) {
                 pauseSong();
@@ -349,7 +318,6 @@
                 progressInterval = setInterval(updateProgress, 1000);
             }
         }
-        
         function playNextSong() {
             const nextIndex = (currentSongIndex + 1) % songs.length;
             playSong(nextIndex);
@@ -357,7 +325,6 @@
                 progressInterval = setInterval(updateProgress, 1000);
             }
         }
-        
         function playPrevSong() {
             const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
             playSong(prevIndex);
@@ -365,10 +332,8 @@
                 progressInterval = setInterval(updateProgress, 1000);
             }
         }
-        
         // Render songs
         const songList = document.getElementById('song-list');
-        
         songs.forEach(song => {
             const songElement = document.createElement('div');
             songElement.className = `grid grid-cols-12 items-center py-3 px-4 hover:bg-gray-800 rounded-md group ${song.playing ? 'text-green-500' : 'text-gray-400 hover:text-white'}`;
@@ -387,32 +352,29 @@
                 <div class="col-span-2 md:col-span-1 text-right text-sm">${song.duration}</div>
             `;
             songList.appendChild(songElement);
-            
             // Add click event to play song
             songElement.addEventListener('click', () => {
                 playSong(song.id - 1); // Using id-1 as index
             });
         });
-
         // Make player bar elements accessible
         document.querySelectorAll('.player-bar').forEach(el => {
             el.classList.add('player-bar');
         });
-
         // Add event listeners for player controls
         document.querySelector('.play-pause-btn').addEventListener('click', togglePlayPause);
         document.querySelector('.next-btn').addEventListener('click', playNextSong);
         document.querySelector('.prev-btn').addEventListener('click', playPrevSong);
-        
         // Mobile menu toggle
         document.querySelector('.md\\:hidden button').addEventListener('click', () => {
             document.querySelector('.hidden.md\\:flex').classList.toggle('hidden');
         });
-        
         // Play first song by default
         playSong(0);
         pauseSong();
     </script>
 </body>
 </html>
-<?php get_footer("Plugins/song/views")?>
+<?php
+
+get_footer("Plugins/song/views")?>

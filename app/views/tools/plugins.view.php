@@ -1,5 +1,6 @@
-<?php get_header("views/tools"); ?>
+<?php
 
+get_header("views/tools"); ?>
 <!-- About Hero Section -->
 <section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-24">
     <div class="container mx-auto px-6 text-center">
@@ -7,35 +8,32 @@
         <p class="text-xl md:text-2xl max-w-4xl mx-auto opacity-90">A simple and modern PHP framework built to help developers move faster, with clarity and structure.</p>
     </div>
 </section>
-
 <?php
+
 $plugins = [];
 $pluginBase = plugins_path();
-
 foreach (scandir($pluginBase) as $folder) {
     if ($folder === '.' || $folder === '..') continue;
-
     $pluginFile = $pluginBase . '/' . $folder . '/' . $folder . '.php';
-
     if (file_exists($pluginFile)) {
         $meta = read_plugin_metadata($pluginFile);
-
         if ($meta) {
             $plugins[] = $meta;
         }
     }
 }
 ?>
-
 <!-- Available Plugins -->
 <section class="py-24 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-4xl font-bold mb-12 text-indigo-800">Available Plugins</h2>
+        <?php
 
-        <?php if (!empty($plugins)) : ?>
+if (!empty($plugins)) : ?>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <?php
-                $cardColors = [
+
+$cardColors = [
                     'from-pink-600 to-pink-500',
                     'from-purple-500 to-purple-600',
                     'from-indigo-600 to-indigo-500',
@@ -45,7 +43,6 @@ foreach (scandir($pluginBase) as $folder) {
                     'from-red-600 to-red-500',
                     'from-cyan-500 to-cyan-600',
                 ];
-
                 foreach ($plugins as $index => $plugin) :
                     $bg = $cardColors[$index % count($cardColors)];
                 ?>
@@ -61,12 +58,19 @@ foreach (scandir($pluginBase) as $folder) {
                         <p class="text-white/90 mb-3"><?= htmlspecialchars($plugin['description']) ?></p>
                         <p class="text-sm text-white italic">By <?= htmlspecialchars($plugin['author']) ?></p>
                     </div>
-                <?php endforeach; ?>
+                <?php
+
+endforeach; ?>
             </div>
-        <?php else : ?>
+        <?php
+
+else : ?>
             <p class="text-gray-600 text-lg">No plugins found.</p>
-        <?php endif; ?>
+        <?php
+
+endif; ?>
     </div>
 </section>
+<?php
 
-<?php get_footer("views/tools"); ?>
+get_footer("views/tools"); ?>

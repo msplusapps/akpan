@@ -1,7 +1,8 @@
-<?php $_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
+<?php
+
+$_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -17,7 +18,6 @@
             height: 100vh;
             margin: 0;
         }
-
         .card {
             background: #16222a;
             padding: 40px;
@@ -26,7 +26,6 @@
             text-align: center;
             animation: fadeIn 1s;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -35,12 +34,10 @@
                 opacity: 1;
             }
         }
-
         h1 {
             color: #00ffff;
             margin-bottom: 20px;
         }
-
         .error {
             color: #ff4d4d;
             background: rgba(255, 77, 77, 0.2);
@@ -48,7 +45,6 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-
         input {
             width: 100%;
             padding: 15px;
@@ -59,12 +55,10 @@
             color: #ffffff;
             transition: 0.3s;
         }
-
         input:focus {
             outline: none;
             box-shadow: 0 0 10px #00ffff;
         }
-
         .btn {
             flex: 1;
             background: #00ffff;
@@ -76,22 +70,18 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
         .btn:hover {
             background: #00e6e6;
         }
-
         .btn-secondary {
             background: transparent;
             color: #00ffff;
             border: 2px solid #00ffff;
         }
-
         .btn-secondary:hover {
             background: #00ffff;
             color: #16222a;
         }
-
         .back-link {
             display: block;
             margin-top: 20px;
@@ -100,28 +90,25 @@
         }
     </style>
 </head>
-
 <body>
     <div class="card">
         <img src="<?= asset('images/login.gif') ?>" alt="Login Animation" class="gif">
-
         <h1>Login</h1>
+        <?php
 
-        <?php if (!empty($error)) : ?>
+if (!empty($error)) : ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
+        <?php
 
+endif; ?>
         <form method="POST">
             <?= csrf_token(); ?>
-
             <div style="margin-bottom: 15px;">
                 <input type="text" name="user" placeholder="Email or Phone" required>
             </div>
-
             <div style="margin-bottom: 15px;">
                 <input type="password" name="password" placeholder="Password" required>
             </div>
-
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <button type="submit" class="btn">Login</button>
                 <a href="<?= url('auth/register') ?>" class="btn btn-secondary">Sign Up</a>
@@ -130,5 +117,4 @@
         <a href="../" class="back-link">← Back to Homepage</a>
     </div>
 </body>
-
 </html>

@@ -1,5 +1,6 @@
-<?php get_header("views/tools"); ?>
+<?php
 
+get_header("views/tools"); ?>
 <!-- About Hero Section -->
 <section class="gradient-bg text-white py-24">
     <div class="container mx-auto px-6 text-center">
@@ -7,7 +8,6 @@
         <p class="text-xl md:text-2xl max-w-2xl mx-auto">A simple and modern PHP framework built to help developers move faster, with clarity and structure.</p>
     </div>
 </section>
-
 <!-- Our Mission -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6 text-center">
@@ -17,7 +17,6 @@
         </p>
     </div>
 </section>
-
 <!-- Core Values -->
 <section class="bg-gray-50 py-20">
     <div class="container mx-auto px-6 text-center">
@@ -41,7 +40,6 @@
         </div>
     </div>
 </section>
-
 <!-- Meet the Creator -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6 text-center">
@@ -50,7 +48,6 @@
         <img src="<?= asset('images/mrakpan.png') ?>" alt="Creator Image" class="mx-auto w-32 h-32 rounded-full shadow-lg">
     </div>
 </section>
-
 <!-- Call to Action -->
 <section class="py-20 bg-indigo-700 text-white text-center">
     <div class="container mx-auto px-6">
@@ -59,5 +56,6 @@
         <a href="./documentation" class="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300">Explore Docs</a>
     </div>
 </section>
+<?php
 
-<?php get_footer("views/tools"); ?>
+get_footer("views/tools"); ?>

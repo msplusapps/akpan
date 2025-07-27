@@ -1,3 +1,5 @@
+<?php
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,10 @@
     <link rel="stylesheet" href="<?=asset("css/admin.css")?>">
 </head>
 <body class="font-sans antialiased text-gray-800">
-   <?php get_navbar("views/admin"); ?>
+   <?php
+
+get_navbar("views/admin"); ?>
     <div class="min-h-screen flex">
-        <?php get_sidebar("views/admin"); ?>
+        <?php
+
+get_sidebar("views/admin"); ?>

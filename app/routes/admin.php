@@ -1,39 +1,23 @@
 <?php
-use Core\Router;
 
+use Core\Router;
 // echo 'reading home route';
 Router::get("admin/", ['AdminController', 'index'])->middleware('auth');
-
-
 Router::get("admin/docs", ['AdminController', 'docs'])->middleware('auth');
-
-
 Router::get("admin/plugins", ['AdminController', 'plugins'])->middleware('auth');
 Router::get("admin/plugins/create", ['AdminController', 'newPlugins'])->middleware('auth');
 Router::get("admin/plugins/delete", ['AdminController', 'deletePlugin'])->middleware('auth');
 Router::post("admin/plugins/store", ['AdminController', 'createNewPlugin'])->middleware('auth');
-
-
 Router::get("admin/routes", ['AdminController', 'routes'])->middleware('auth');
-
-
 Router::get("admin/users", ['AdminController', 'users'])->middleware('auth');
-
-
 Router::get("admin/assets", ['AdminController', 'assets'])->middleware('auth');
-
-
-
+Router::get("admin/tools", ['AdminController', 'tools'])->middleware('auth');
+Router::get("admin/tools/doctor", ['AdminController', 'doctor'])->middleware('auth');
+Router::get('admin/tools/piko', ['AdminController', 'piko'])->middleware('auth');
+Router::get('admin/tools/piko/run/{method}', ['AdminController', 'pikoRun'])->middleware('auth');
+Router::post('admin/tools/doctor/run/{method}', ['AdminController', 'run'])->middleware('auth');
+// Router::get("admin/tools/doctor/run/{method}", ['AdminController', 'run'])->middleware('auth');
+// Router::get("admin/tools/doctor/run/greet", ['AdminController', 'run'])->middleware('auth');
 Router::get("admin/migrations", ['AdminController', 'migrations'])->middleware('auth');
-
-
 Router::get("admin/middlewares", ['AdminController', 'middlewares'])->middleware('auth');
-
-
 Router::get("admin/controllers", ['AdminController', 'controllers'])->middleware('auth');
-
-
-Router::get('admin/cache', ['AdminController', 'cache']);
-Router::post('admin/cache/update', ['AdminController', 'updateCache'])->middleware('auth');
-Router::post('admin/cache/clear', ['AdminController', 'clearCache'])->middleware('auth');
-

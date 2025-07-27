@@ -1,5 +1,6 @@
-<?php get_header("views/tools"); ?>
+<?php
 
+get_header("views/tools"); ?>
 <!-- Hero Section -->
 <section class="gradient-bg text-white py-24">
     <div class="container mx-auto px-6 text-center">
@@ -7,7 +8,6 @@
         <p class="text-xl md:text-2xl max-w-2xl mx-auto">Get the latest version of Akpan MVC and start building fast, modern PHP applications today.</p>
     </div>
 </section>
-
 <!-- Download Section -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6 max-w-3xl text-center">
@@ -15,18 +15,15 @@
         <div class="bg-gray-900 text-left text-green-400 p-4 rounded-lg mb-8 overflow-x-auto">
             <code>composer create-project msplusapps/akpan your-project-name</code>
         </div>
-
         <h2 class="text-2xl md:text-3xl font-bold mb-6">Manual Download</h2>
         <p class="text-gray-600 mb-4">Prefer downloading the ZIP? Use the link below:</p>
         <a href="#" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg inline-block hover:bg-indigo-700 transition duration-300">Download ZIP</a>
-
         <div class="mt-10 text-gray-500">
             <p>Current Version: <strong>v1.0.0</strong></p>
             <p>Requires PHP 8.0 or higher</p>
         </div>
     </div>
 </section>
-
 <!-- Why Akpan Section -->
 <section class="py-20 bg-gray-100">
     <div class="container mx-auto px-6 max-w-4xl text-center">
@@ -39,5 +36,6 @@
         </ul>
     </div>
 </section>
+<?php
 
-<?php get_footer("views/tools"); ?>
+get_footer("views/tools"); ?>

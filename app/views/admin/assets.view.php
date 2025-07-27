@@ -1,4 +1,6 @@
-<?php get_header("views/admin"); ?>
+<?php
+
+get_header("views/admin"); ?>
 <main class="flex-1 bg-gray-100 overflow-y-auto min-h-screen">
     <section class="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-white py-20 px-10">
         <div class="text-left max-w-6xl mx-auto">
@@ -8,10 +10,8 @@
             </p>
         </div>
     </section>
-
     <section class="px-8 pt-10 pb-20 max-w-7xl mx-auto">
         <h2 class="text-3xl font-bold mb-8 text-gray-800">Project Root Structure</h2>
-
         <style>
             /* Grid container for top-level */
             .top-level-grid {
@@ -50,7 +50,6 @@
             .rotate {
                 transform: rotate(90deg);
             }
-
             /* Nested file/folder lists inside card */
             .nested-list {
                 margin-left: 1rem;
@@ -85,10 +84,10 @@
                 white-space: nowrap;
             }
         </style>
-
         <div class="top-level-grid">
             <?php
-            function formatSize($bytes) {
+
+function formatSize($bytes) {
                 $sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
                 $i = 0;
                 while ($bytes >= 1024 && $i < count($sizes) - 1) {
@@ -97,18 +96,15 @@
                 }
                 return round($bytes, 2) . ' ' . $sizes[$i];
             }
-
             function renderNestedTree($dir, $parentId) {
                 $items = scandir($dir);
                 $items = array_diff($items, ['.', '..']);
                 if (empty($items)) return;
-
                 echo "<div class='nested-list' id='nested-$parentId' style='display:none;'>";
                 echo "<ul>";
                 foreach ($items as $item) {
                     $path = "$dir/$item";
                     $id = md5($path);
-
                     if (is_dir($path)) {
                         echo "<li class='folder' onclick=\"toggleNested('$id')\">";
                         echo "<span class='arrow' id='nested-arrow-$id'>▶</span>📁 " . htmlspecialchars($item);
@@ -121,11 +117,9 @@
                 }
                 echo "</ul></div>";
             }
-
             $rootDir = '.';
             $topLevelItems = scandir($rootDir);
             $topLevelItems = array_diff($topLevelItems, ['.', '..']);
-
             foreach ($topLevelItems as $item) {
                 $path = "$rootDir/$item";
                 $id = md5($path);
@@ -147,13 +141,11 @@
             ?>
         </div>
     </section>
-
     <script>
         function toggle(id) {
             const el = document.getElementById('nested-' + id);
             const arrow = document.getElementById('arrow-' + id);
             if (!el) return;
-
             if (el.style.display === 'none') {
                 el.style.display = 'block';
                 arrow.classList.add('rotate');
@@ -162,12 +154,10 @@
                 arrow.classList.remove('rotate');
             }
         }
-
         function toggleNested(id) {
             const el = document.getElementById('nested-' + id);
             const arrow = document.getElementById('nested-arrow-' + id);
             if (!el) return;
-
             if (el.style.display === 'none') {
                 el.style.display = 'block';
                 arrow.classList.add('rotate');
@@ -178,4 +168,6 @@
         }
     </script>
 </main>
-<?php get_footer("views/admin"); ?>
+<?php
+
+get_footer("views/admin"); ?>

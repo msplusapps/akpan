@@ -1,7 +1,12 @@
-<?php get_header('admin'); ?>
-<?php get_navbar('admin'); ?>
-<?php get_sidebar('admin'); ?>
+<?php
 
+get_header('admin'); ?>
+<?php
+
+get_navbar('admin'); ?>
+<?php
+
+get_sidebar('admin'); ?>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -12,7 +17,6 @@
             </div>
         </div>
     </div>
-
     <section class="content">
         <div class="container-fluid">
             <div class="card">
@@ -29,7 +33,6 @@
                     </form>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-body">
                     <form action="<?= url('/admin/cache/clear') ?>" method="post">
@@ -44,5 +47,6 @@
         </div>
     </section>
 </div>
+<?php
 
-<?php get_footer('admin'); ?>
+get_footer('admin'); ?>

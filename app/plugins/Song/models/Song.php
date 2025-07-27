@@ -1,20 +1,16 @@
 <?php
 
 namespace App\Plugins\Song\Models;
-
 use Core\Model;
-
 class Song extends Model
 {
     protected static $table = 'akn_songs';
-
     public int $id;
     public string $title;
     public string $artist;
     public ?string $album = null;
     public string $created_at;
     public string $updated_at;
-
     /**
      * Get all songs
      */
@@ -22,7 +18,6 @@ class Song extends Model
     {
         return (new static)->select("SELECT * FROM " . (new static)->prefix . static::$table);
     }
-
     /**
      * Find a song by ID
      */
@@ -32,10 +27,8 @@ class Song extends Model
             "SELECT * FROM " . (new static)->prefix . static::$table . " WHERE id = :id LIMIT 1",
             ['id' => $id]
         );
-
         return $result[0] ?? null;
     }
-
     /**
      * Create a new song
      */
@@ -47,7 +40,6 @@ class Song extends Model
             'album' => $data['album'] ?? null,
         ]);
     }
-
     /**
      * Update an existing song
      */
@@ -59,7 +51,6 @@ class Song extends Model
             'album' => $data['album'] ?? null,
         ]);
     }
-
     /**
      * Delete a song by ID
      */
@@ -67,5 +58,4 @@ class Song extends Model
     {
         return (new static)->delete($id);
     }
-
 }

@@ -1,6 +1,7 @@
-<?php get_header("views/admin"); ?>
-<main class="flex-1 overflow-y-auto">
+<?php
 
+get_header("views/admin"); ?>
+<main class="flex-1 overflow-y-auto">
     <!-- Hero -->
     <section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-20 px-10">
         <div class="text-left">
@@ -10,24 +11,20 @@
             </p>
         </div>
     </section>
-
     <!-- Create New Plugin Button -->
     <div class="px-10 mt-4">
-        <a href="<?= url('./admin/plugins/create') ?>" 
+        <a href="<?= url('./admin/plugins/create') ?>"
            class="inline-block bg-white text-indigo-700 hover:bg-indigo-50 font-semibold px-6 py-2 rounded-lg shadow-md transition">
             ➕ Create New Plugin
         </a>
     </div>
-
     <?php
-    $plugins = [];
-    $pluginBase = plugins_path();
 
+$plugins = [];
+    $pluginBase = plugins_path();
     foreach (scandir($pluginBase) as $folder) {
         if ($folder === '.' || $folder === '..') continue;
-
         $pluginFile = $pluginBase . '/' . $folder . '/' . $folder . '.php';
-
         if (file_exists($pluginFile)) {
             $meta = read_plugin_metadata($pluginFile);
             if ($meta) {
@@ -37,11 +34,13 @@
         }
     }
     ?>
-
     <div class="p-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <?php if (!empty($plugins)) : ?>
+        <?php
+
+if (!empty($plugins)) : ?>
             <?php
-            $cardColors = [
+
+$cardColors = [
                 'from-pink-600 to-pink-500',
                 'from-purple-500 to-purple-600',
                 'from-indigo-600 to-indigo-500',
@@ -55,7 +54,6 @@
                 $bg = $cardColors[$index % count($cardColors)];
             ?>
                 <div class="bg-gradient-to-br <?= $bg ?> text-white shadow-lg rounded-2xl p-6 border border-white/20 hover:shadow-2xl transition relative flex flex-col justify-between">
-                    
                     <!-- Plugin Info -->
                     <div>
                         <div class="flex justify-between items-center mb-4">
@@ -66,21 +64,31 @@
                         <p class="mb-3"><?= htmlspecialchars($plugin['description']) ?></p>
                         <p class="text-sm italic">By <?= htmlspecialchars($plugin['author']) ?></p>
                     </div>
-
                     <!-- Delete Button -->
                     <div class="flex justify-end mt-6">
-                        <a href="<?= url('./admin/plugins/delete?plugin=' . urlencode($plugin['folder'] ?? '')) ?>"
+                        <a href="<?= url('./admin/plugins/delete?plugin=' . urlencode(strtolower($plugin['folder']) ?? '')) ?>"
                            onclick="return confirm('Are you sure you want to delete this plugin?')"
                            class="text-white font-bold hover:text-red-200 transition flex items-center gap-2 text-lg">
-                            <i class="fas fa-trash-alt"></i> Delete
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a target="_blank" href="<?= url("./".htmlspecialchars(strtolower($plugin['folder']))) ?>"
+                           class="ml-4 text-white font-bold hover:text-red-200 transition flex items-center gap-2 text-lg">
+                            <i class="fas fa-globe"></i>
                         </a>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        <?php else : ?>
+            <?php
+
+endforeach; ?>
+        <?php
+
+else : ?>
             <p class="text-center text-gray-600 text-lg col-span-full">No plugins found.</p>
-        <?php endif; ?>
+        <?php
+
+endif; ?>
     </div>
 </main>
+<?php
 
-<?php get_footer("views/admin"); ?>
+get_footer("views/admin"); ?>

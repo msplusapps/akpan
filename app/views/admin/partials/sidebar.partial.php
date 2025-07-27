@@ -1,3 +1,5 @@
+<?php
+
 <aside class="w-64 bg-gray-800 text-white flex flex-col px-4 py-6 space-y-4">
     <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
     <nav class="space-y-3">
@@ -9,5 +11,6 @@
         <a href="<?= url('./admin/middlewares')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Middlewares</a>
         <a href="<?= url('./admin/users')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Users</a>
         <a href="<?= url('./admin/assets')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Assets</a>
+        <a href="<?= url('./admin/tools')?>" class="block px-3 py-2 rounded-md hover:bg-gray-700">Tools</a>
     </nav>
 </aside>

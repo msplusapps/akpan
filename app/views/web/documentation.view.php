@@ -1,3 +1,5 @@
+<?php
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800">
-
   <!-- Header -->
   <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -24,9 +25,7 @@
       </nav>
     </div>
   </header>
-
   <main class="max-w-5xl mx-auto px-4 py-12 space-y-16">
-
     <!-- Intro -->
     <section id="intro">
       <h2 class="text-3xl font-bold mb-4">🔰 Introduction</h2>
@@ -35,7 +34,6 @@
         It comes bundled with routing, controllers, views, middleware, and a built-in migration system.
       </p>
     </section>
-
     <!-- Install -->
     <section id="install">
       <h2 class="text-3xl font-bold mb-4">📦 Installation</h2>
@@ -44,7 +42,6 @@
       <p class="mt-4">After installation, navigate to the folder and run:</p>
       <pre class="bg-gray-800 text-white p-4 rounded mt-2"><code>php -S localhost:8000 -t public</code></pre>
     </section>
-
     <!-- Structure -->
     <section id="structure">
       <h2 class="text-3xl font-bold mb-4">📁 Directory Structure</h2>
@@ -73,7 +70,6 @@ project/
 └── composer.json
       </code></pre>
     </section>
-
     <!-- .env -->
     <section id="env">
       <h2 class="text-3xl font-bold mb-4">⚙️ .env Configuration</h2>
@@ -83,19 +79,16 @@ DB_USER=root
 DB_PASS=secret</code></pre>
       <p class="mt-2">Environment variables are loaded automatically by the framework via <code>Env::load()</code>.</p>
     </section>
-
     <!-- Routing -->
     <section id="routing">
       <h2 class="text-3xl font-bold mb-4">🛣️ Routing</h2>
       <p>Define routes in <code>app/routes/web.php</code>:</p>
       <pre class="bg-gray-800 text-white p-4 rounded"><code>
 Router::get('/', ['WebController', 'index'])->name('home');
-
 Router::get('/login', ['AuthController', 'login'])->name('login');
 Router::post('/login', ['AuthController', 'authenticate']);
       </code></pre>
     </section>
-
     <!-- Middleware -->
     <section id="middleware">
       <h2 class="text-3xl font-bold mb-4">🛡 Middleware</h2>
@@ -116,7 +109,6 @@ Router::get('/dashboard', ['UserController', 'dashboard'])
       ->name('dashboard');
       </code></pre>
     </section>
-
     <!-- Controllers -->
     <section id="controllers">
       <h2 class="text-3xl font-bold mb-4">🧠 Controllers</h2>
@@ -129,7 +121,6 @@ class WebController extends Controller {
 }
       </code></pre>
     </section>
-
     <!-- Models -->
     <section id="models">
       <h2 class="text-3xl font-bold mb-4">🗃 Models</h2>
@@ -140,7 +131,6 @@ class User extends Model {
 }
       </code></pre>
     </section>
-
     <!-- Views -->
     <section id="views">
       <h2 class="text-3xl font-bold mb-4">🖼 Views</h2>
@@ -149,7 +139,6 @@ class User extends Model {
 &lt;h1&gt;<?= $title ?? 'Default Title' ?>&lt;/h1&gt;
       </code></pre>
     </section>
-
     <!-- Migrations -->
     <section id="migrations">
       <h2 class="text-3xl font-bold mb-4">📤 Migrations</h2>
@@ -166,7 +155,6 @@ CREATE TABLE users (
       </code></pre>
       <p>The framework will auto-run pending migrations on load.</p>
     </section>
-
     <!-- Local Testing -->
     <section id="test">
       <h2 class="text-3xl font-bold mb-4">🧪 Local Testing</h2>
@@ -174,12 +162,9 @@ CREATE TABLE users (
       <pre class="bg-gray-800 text-white p-4 rounded"><code>php -S localhost:8000 -t public</code></pre>
       <p>Ensure your database is ready and credentials are correct in <code>.env</code>.</p>
     </section>
-
   </main>
-
   <footer class="bg-gray-900 text-white py-8 text-center">
     <p>&copy; <?= date('Y') ?> Akpan MVC. Open Source. MIT Licensed.</p>
   </footer>
-
 </body>
 </html>
