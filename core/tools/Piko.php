@@ -1,11 +1,11 @@
 <?php
-
 /**
  * Name: Piko
- * Version: 2.1
+ * Version: 3.0
  * Author: Promise Peter Akpan
  * Description: Piko is a modern code quality, style checker, and formatter for your PHP projects.
  */
+
 namespace Core\Tools;
 
 use RecursiveIteratorIterator;
@@ -16,7 +16,8 @@ final class Piko
     private string $basePath;
     private array $violations = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->basePath = dirname(__DIR__, 2); // Project root
     }
 
@@ -103,31 +104,26 @@ final class Piko
         foreach ($files as $file) {
             $content = file_get_contents($file);
 
-            // ✅ 1. Remove any whitespace before "<?php" while keeping docblocks & comments
-            $content = preg_replace('/^\s*<\?php\s*/', "<?php\n\n", $content);
+            // 1. Remove unnecessary top whitespace
+            $content = preg_replace('/^\s+<\?php/', '<?php', $content);
 
-            // ✅ 2. Ensure PHP tag is always present
-            if (!str_starts_with($content, "<?php")) {
-                $content = "<?php\n\n" . $content;
-            }
-
-            // ✅ 3. Replace tabs with 4 spaces
+            // 2. Replace tabs with 4 spaces
             $content = preg_replace('/\t/', '    ', $content);
 
-            // ✅ 4. Remove trailing spaces at end of lines
-            $content = preg_replace('/[ \t]+$/m', '', $content);
+            // 3. Remove trailing spaces
+            $content = preg_replace('/\s+$/m', '', $content);
 
-            // ✅ 5. Add space after control structures
+            // 4. Ensure a single newline at the end of file
+            $content = rtrim($content) . "\n";
+
+            // 5. Add space after control structures
             $content = preg_replace('/\b(if|else|elseif|for|foreach|while|switch)\(/', '$1 (', $content);
 
-            // ✅ 6. Normalize opening braces
+            // 6. Normalize opening braces
             $content = preg_replace('/\)\s*\{/', ') {', $content);
 
-            // ✅ 7. Collapse multiple empty lines (keep max 2)
+            // 7. Remove multiple empty lines (keep max 2)
             $content = preg_replace("/\n{3,}/", "\n\n", $content);
-
-            // ✅ 8. Ensure single newline at EOF
-            $content = rtrim($content) . "\n";
 
             if ($content !== file_get_contents($file)) {
                 file_put_contents($file, $content);
@@ -135,7 +131,64 @@ final class Piko
             }
         }
 
-        return "<p style='color:green;font-weight:bold;'>✅ Prettified {$fixedCount} file(s) successfully (removed top whitespace)!</p>";
+        return "<p style='color:green;font-weight:bold;'>✅ Formatted {$fixedCount} file(s) successfully!</p>";
+    }
+
+    /**
+     * ✅ NEW: Reorder class methods (Public → Protected → Private)
+     */
+    public function reorderClassMethods(): string
+    {
+        $files = $this->getPhpFiles();
+        $rewritten = 0;
+
+        foreach ($files as $file) {
+            $content = file_get_contents($file);
+
+            if (preg_match('/class\s+\w+\s*[^{]*\{([\s\S]*)\}$/', $content, $matches)) {
+                $classBody = $matches[1];
+
+                // Extract methods
+                preg_match_all('/(\/\*\*[\s\S]*?\*\/\s*)?(public|protected|private)\s+function\s+\w+\s*\([^\)]*\)\s*\{[\s\S]*?\}/', $classBody, $methodMatches, PREG_SET_ORDER);
+
+                $publicMethods = [];
+                $protectedMethods = [];
+                $privateMethods = [];
+
+                foreach ($methodMatches as $m) {
+                    $doc = $m[1] ?? '';
+                    $visibility = $m[2];
+                    $methodCode = $m[0];
+
+                    if ($visibility === 'public') {
+                        $publicMethods[] = $doc . $methodCode;
+                    } elseif ($visibility === 'protected') {
+                        $protectedMethods[] = $doc . $methodCode;
+                    } else {
+                        $privateMethods[] = $doc . $methodCode;
+                    }
+                }
+
+                // Remove old methods
+                $newClassBody = preg_replace('/(\/\*\*[\s\S]*?\*\/\s*)?(public|protected|private)\s+function\s+\w+\s*\([^\)]*\)\s*\{[\s\S]*?\}/', '', $classBody);
+                $newClassBody = preg_replace("/\n{3,}/", "\n\n", trim($newClassBody));
+
+                // Rebuild class body
+                $reordered = $newClassBody . "\n\n" .
+                             implode("\n\n", $publicMethods) . "\n\n" .
+                             implode("\n\n", $protectedMethods) . "\n\n" .
+                             implode("\n\n", $privateMethods);
+
+                $newContent = preg_replace('/(class\s+\w+\s*[^{]*\{)[\s\S]*(\})$/', '$1' . "\n" . $reordered . "\n" . '$2', $content);
+
+                if ($newContent !== $content) {
+                    file_put_contents($file, $newContent);
+                    $rewritten++;
+                }
+            }
+        }
+
+        return "<p style='color:blue;font-weight:bold;'>✅ Reordered methods in {$rewritten} class file(s).</p>";
     }
 
     /**
