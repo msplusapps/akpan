@@ -1,5 +1,3 @@
-<?php
-
 <aside class="w-64 bg-gray-800 text-white flex flex-col px-4 py-6 space-y-4">
     <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
     <nav class="space-y-3">

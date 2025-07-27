@@ -1,6 +1,4 @@
-<?php
-
-get_header("views/admin"); ?>
+<?php get_header("views/admin"); ?>
 <main class="flex-1 overflow-y-auto">
     <!-- Hero -->
     <section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-20 px-10">
@@ -11,6 +9,7 @@ get_header("views/admin"); ?>
             </p>
         </div>
     </section>
+
     <!-- Tool Actions -->
     <section class="max-w-6xl mx-auto px-6 py-12">
         <h2 class="text-3xl font-bold text-indigo-800 mb-8">Available Actions</h2>
@@ -26,6 +25,7 @@ get_header("views/admin"); ?>
                     Run Check
                 </a>
             </div>
+
             <!-- Fix Style -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -37,6 +37,7 @@ get_header("views/admin"); ?>
                     Auto Fix
                 </a>
             </div>
+
             <!-- Format Code -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -48,6 +49,7 @@ get_header("views/admin"); ?>
                     Format
                 </a>
             </div>
+
             <!-- Inspect Classes -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -59,6 +61,7 @@ get_header("views/admin"); ?>
                     Inspect
                 </a>
             </div>
+
             <!-- List PHP Files -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -70,6 +73,7 @@ get_header("views/admin"); ?>
                     List Files
                 </a>
             </div>
+
             <!-- Prettify Code -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -81,28 +85,35 @@ get_header("views/admin"); ?>
                     Prettify
                 </a>
             </div>
+
+            <!-- NEW: Reorder Methods -->
+            <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-xl text-red-600 mb-2">Reorder Methods</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Organize class methods: Public → Protected → Private (with docblocks preserved).
+                    </p>
+                </div>
+                <a href="<?= url('admin/tools/piko/run/reorderClassMethods') ?>"
+                   class="bg-red-600 hover:bg-red-700 text-white font-semibold w-full py-2 rounded text-center">
+                    Reorder
+                </a>
+            </div>
         </div>
     </section>
+
     <!-- Output Section -->
     <section class="max-w-6xl mx-auto px-6 py-6">
         <div class="bg-white rounded-xl shadow p-6">
             <h2 class="text-xl font-bold mb-4 text-gray-700">Result</h2>
             <div id="result-container">
-                <?php
-
-if (!empty($result)): ?>
+                <?php if (!empty($result)): ?>
                     <?= $result ?>
-                <?php
-
-else: ?>
+                <?php else: ?>
                     <p class="text-gray-500">Run any tool above to see results here.</p>
-                <?php
-
-endif; ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 </main>
-<?php
-
-get_footer("views/admin"); ?>
+<?php get_footer("views/admin"); ?>
