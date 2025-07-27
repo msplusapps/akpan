@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 class Route {
     public string $method;

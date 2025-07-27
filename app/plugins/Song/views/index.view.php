@@ -1,5 +1,4 @@
 <?php
-
 get_header("Plugins/song/views")?>
 <!DOCTYPE html>
 <html lang="en">
@@ -376,5 +375,4 @@ get_header("Plugins/song/views")?>
 </body>
 </html>
 <?php
-
 get_footer("Plugins/song/views")?>

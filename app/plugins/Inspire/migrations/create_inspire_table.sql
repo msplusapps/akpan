@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `akn_inspire`  (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `message` TEXT NOT NULL,
+    `author` VARCHAR(255) DEFAULT NULL,
+    `category` VARCHAR(100) DEFAULT 'General',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <!-- Main Content -->
 <main class="flex-1 overflow-y-auto">
@@ -38,5 +37,4 @@ get_header("views/admin"); ?>
     </div>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

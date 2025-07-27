@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Plugins\Zapper\Models;
 use Core\Model;
 class Zapper extends Model

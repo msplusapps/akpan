@@ -1,5 +1,4 @@
 <?php
-
 get_header("Plugins/Zapper/views") ?>
 <main class="min-h-screen bg-gray-50 px-4 py-8">
     <div class="max-w-md mx-auto bg-white shadow-lg rounded-xl p-6">

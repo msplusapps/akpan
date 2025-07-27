@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Plugins\Song\Controllers;
 use Core\Controller;
 use App\Plugins\Song\Models\Song;

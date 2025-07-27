@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <main class="flex-1 bg-gray-100 overflow-y-auto">
     <!-- Hero -->
@@ -14,7 +13,6 @@ get_header("views/admin"); ?>
     <!-- Routes -->
     <div class="p-8">
         <?php
-
 $grouped = [
             'Core' => [],
             'Plugins' => []
@@ -35,36 +33,27 @@ $grouped = [
         <h2 class="text-2xl font-bold mb-4 text-gray-800">Core Routes</h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
             <?php
-
 foreach ($grouped['Core'] as $route): ?>
                 <?php
-
 include 'route-card.php'; ?>
             <?php
-
 endforeach; ?>
         </div>
         <!-- Plugin Routes -->
         <?php
-
 foreach ($grouped['Plugins'] as $plugin => $pluginRoutes): ?>
             <h2 class="text-2xl font-bold mb-4 text-orange-700"><?= htmlspecialchars($plugin) ?> Plugin</h2>
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
                 <?php
-
 foreach ($pluginRoutes as $route): ?>
                     <?php
-
 include 'route-card.php'; ?>
                 <?php
-
 endforeach; ?>
             </div>
         <?php
-
 endforeach; ?>
     </div>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

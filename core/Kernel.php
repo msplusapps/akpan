@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 class Kernel {
     protected static bool $loaded = false;

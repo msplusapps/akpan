@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Zapper Plugin
  * Version: 1.0

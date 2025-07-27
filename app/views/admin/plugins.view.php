@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <main class="flex-1 overflow-y-auto">
     <!-- Hero -->
@@ -19,7 +18,6 @@ get_header("views/admin"); ?>
         </a>
     </div>
     <?php
-
 $plugins = [];
     $pluginBase = plugins_path();
     foreach (scandir($pluginBase) as $folder) {
@@ -36,10 +34,8 @@ $plugins = [];
     ?>
     <div class="p-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <?php
-
 if (!empty($plugins)) : ?>
             <?php
-
 $cardColors = [
                 'from-pink-600 to-pink-500',
                 'from-purple-500 to-purple-600',
@@ -78,17 +74,13 @@ $cardColors = [
                     </div>
                 </div>
             <?php
-
 endforeach; ?>
         <?php
-
 else : ?>
             <p class="text-center text-gray-600 text-lg col-span-full">No plugins found.</p>
         <?php
-
 endif; ?>
     </div>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

@@ -1,5 +1,4 @@
 <?php
-
 get_header("Plugins/Zapper/views")?>
     <main class="flex-grow container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -126,5 +125,4 @@ get_header("Plugins/Zapper/views")?>
     startListening();
 </script> -->
 <?php
-
 get_footer("Plugins/Zapper/views"); ?>

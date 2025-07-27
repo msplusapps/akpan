@@ -1,11 +1,8 @@
 <?php
-
 get_header('admin'); ?>
 <?php
-
 get_navbar('admin'); ?>
 <?php
-
 get_sidebar('admin'); ?>
 <div class="content-wrapper">
     <div class="content-header">
@@ -48,5 +45,4 @@ get_sidebar('admin'); ?>
     </section>
 </div>
 <?php
-
 get_footer('admin'); ?>

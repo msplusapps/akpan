@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/tools"); ?>
 <!-- About Hero Section -->
 <section class="gradient-bg text-white py-24">
@@ -57,5 +56,4 @@ get_header("views/tools"); ?>
     </div>
 </section>
 <?php
-
 get_footer("views/tools"); ?>

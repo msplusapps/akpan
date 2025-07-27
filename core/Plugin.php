@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 abstract class Plugin
 {

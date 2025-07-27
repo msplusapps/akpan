@@ -1,5 +1,4 @@
 <?php
-
 function asset($path = '') {
         // Normalize path
         $path = ltrim($path, '/');

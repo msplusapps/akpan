@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 class Security{
     private static string $key = "mskboss";

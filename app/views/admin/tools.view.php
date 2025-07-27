@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <main class="flex-1 overflow-y-auto">
     <!-- Hero -->
@@ -12,7 +11,6 @@ get_header("views/admin"); ?>
         </div>
     </section>
     <?php
-
 $tools = [];
     $toolBase = base_path('/core/tools');
     foreach (scandir($toolBase) as $folder) {
@@ -35,10 +33,8 @@ $tools = [];
     ?>
     <div class="p-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <?php
-
 if (!empty($tools)) : ?>
             <?php
-
 $cardColors = [
                 'from-pink-600 to-pink-500',
                 'from-purple-500 to-purple-600',
@@ -78,17 +74,13 @@ $cardColors = [
                     </div>
                 </div>
             <?php
-
 endforeach; ?>
         <?php
-
 else : ?>
             <p class="text-center text-gray-600 text-lg col-span-full">No tools found.</p>
         <?php
-
 endif; ?>
     </div>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

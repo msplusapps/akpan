@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <main class="flex-1 overflow-y-auto">
     <!-- Hero -->
@@ -15,11 +14,9 @@ get_header("views/admin"); ?>
     <section class="max-w-6xl mx-auto px-6 py-12">
         <h2 class="text-3xl font-bold text-indigo-800 mb-8">Available Methods</h2>
         <?php
-
 if (!empty($methods)) : ?>
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 <?php
-
 foreach ($methods as $method): ?>
                     <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between space-y-4">
                         <div>
@@ -34,20 +31,16 @@ foreach ($methods as $method): ?>
                         </form>
                     </div>
                 <?php
-
 endforeach; ?>
             </div>
         <?php
-
 else : ?>
             <div class="bg-white text-center text-red-600 p-6 rounded-xl shadow">
                 <p>No callable methods found in the Doctor tool.</p>
             </div>
         <?php
-
 endif; ?>
     </section>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

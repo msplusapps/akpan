@@ -1,5 +1,4 @@
 <?php
-
 namespace Core\Utils;
 class Cache {
     private static $storagePath;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Core\Utils;
 use DOMDocument;
 use Core\Utils\FileManager;

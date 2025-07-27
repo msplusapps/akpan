@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 class Router {
     protected static array $routes = [];
@@ -76,24 +75,42 @@ class Router {
         if (is_callable($route->action)) {
             return call_user_func_array($route->action, $params);
         }
+
         [$controller, $method] = $route->action;
-        $controllerClass = "App\\Controllers\\$controller";
-        $controllerFile = "app/controllers/{$controller}.php";
+
+        // ✅ Detect full namespace
+        if (class_exists($controller)) {
+            $controllerClass = $controller;
+            $controllerFile = str_replace("\\", "/", $controllerClass) . ".php";
+            $controllerFile = "app/" . preg_replace('/^App\//', '', $controllerFile);
+        } else {
+            // ✅ Legacy: assume relative (e.g., "HomeController")
+            $controllerClass = "App\\Controllers\\$controller";
+            $controllerFile = "app/controllers/{$controller}.php";
+        }
+
+        // ✅ Load the file if not already loaded
         if (!class_exists($controllerClass)) {
             if (!file_exists($controllerFile)) {
                 return Response::fallback("❌ Controller file not found: $controllerFile", $route->uri);
             }
             require_once $controllerFile;
         }
+
         if (!class_exists($controllerClass)) {
             return Response::fallback("❌ Controller class not found: $controllerClass", $route->uri);
         }
+
         $instance = new $controllerClass;
+
         if (!method_exists($instance, $method)) {
             return Response::fallback("❌ Method '$method' not found in '$controllerClass'", $route->uri);
         }
+
         return call_user_func_array([$instance, $method], $params);
     }
+
+
     /**
      * Normalize URI (trim, remove query, multiple slashes)
      */

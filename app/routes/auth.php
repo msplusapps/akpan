@@ -1,5 +1,4 @@
 <?php
-
 use Core\Router;
 Router::get("auth/", ['AuthController', 'index']);
 Router::post("auth/", ['AuthController', 'authenticate']);

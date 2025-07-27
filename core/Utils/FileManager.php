@@ -1,5 +1,4 @@
 <?php
-
 namespace Core\Utils;
 class FileManager {
     // Create a new file with optional content

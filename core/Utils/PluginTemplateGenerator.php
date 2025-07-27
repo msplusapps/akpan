@@ -1,5 +1,4 @@
 <?php
-
 namespace Core\Utils;
 class PluginTemplateGenerator
 {
@@ -9,7 +8,6 @@ class PluginTemplateGenerator
         $routeName = strtolower($plugin->plugin_name);
         return <<<PHP
 <?php
-
 /**
  * Plugin Name: {$plugin->plugin_name} Plugin
  * Version: {$plugin->version}
@@ -20,6 +18,7 @@ namespace App\Plugins\\$className;
 use Core\Plugin;
 use Core\Router;
 use App\Plugins\\$className\Controllers\\{$className}Controller;
+
 class $className extends Plugin
 {
     public function activate() {
@@ -38,7 +37,6 @@ PHP;
         $className = ucfirst($plugin->plugin_name) . "Controller";
         return <<<PHP
 <?php
-
 namespace App\Plugins\\{$plugin->plugin_name}\Controllers;
 use Core\Controller;
 class $className extends Controller
@@ -66,12 +64,11 @@ SQL;
     $tableName = 'akn_' . strtolower($plugin->plugin_name);
     return <<<PHP
 <?php
-
 namespace App\Plugins\\{$className}\Models;
 use Core\Model;
 class {$className} extends Model
 {
-    protected static \$table = '{$tableName}';
+    protected \$table = '{$tableName}';
     public int \$id;
     public string \$created_at;
     public string \$updated_at;
@@ -80,15 +77,15 @@ class {$className} extends Model
      */
     public static function all(): array
     {
-        return (new static)->select("SELECT * FROM " . (new static)->prefix . static::\$table);
+        return \$this->select("SELECT * FROM " . \$this->prefix . static::\$table);
     }
     /**
      * Find a record by ID
      */
     public static function find(int \$id): ?array
     {
-        \$result = (new static)->select(
-            "SELECT * FROM " . (new static)->prefix . static::\$table . " WHERE id = :id LIMIT 1",
+        \$result = \$this->select(
+            "SELECT * FROM " . \$this->prefix . static::\$table . " WHERE id = :id LIMIT 1",
             ['id' => \$id]
         );
         return \$result[0] ?? null;
@@ -98,21 +95,21 @@ class {$className} extends Model
      */
     public static function create(array \$data): bool
     {
-        return (new static)->insert(\$data);
+        return \$this->insert(\$data);
     }
     /**
      * Update an existing record
      */
     public static function updateRecord(int \$id, array \$data): bool
     {
-        return (new static)->update(\$id, \$data);
+        return \$this->update(\$id, \$data);
     }
     /**
      * Delete a record by ID
      */
     public static function remove(int \$id): bool
     {
-        return (new static)->delete(\$id);
+        return \$this->delete(\$id);
     }
 }
 PHP;
@@ -126,13 +123,10 @@ public static function generateViewTemplate(object $plugin): string
 <!-- You can loop through your data and display them here -->
 <!-- Example:
 <?php
-
 foreach (\$data as \$item): ?>
     <div><?php
-
 echo \$item['id']; ?></div>
 <?php
-
 endforeach; ?>
 -->
 HTML;

@@ -1,5 +1,4 @@
 <?php
-
 namespace Core;
 class Request {
     public string $method;

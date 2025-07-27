@@ -1,6 +1,3 @@
-<?php
-
-<!-- Footer -->
 <footer class="bg-white border-t border-gray-200 py-4">
     <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
         <p>Zapper &copy; 2023 | Secure file transfer between devices</p>

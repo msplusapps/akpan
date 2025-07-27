@@ -1,5 +1,4 @@
 <?php
-
 <!-- Navigation -->
  <nav class="gradient-bg text-white fixed w-full z-50 shadow-lg">
      <div class="container mx-auto px-6 py-4">

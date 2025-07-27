@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 use Core\Controller;
 class _404Controller extends Controller{

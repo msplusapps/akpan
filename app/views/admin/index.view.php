@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <style>
     section.py-16.bg-gray-100.min-h-screen {
@@ -51,21 +50,18 @@ get_header("views/admin"); ?>
             <h3 class="text-xl font-semibold mb-4">📊 Storage Usage by Folders</h3>
             <ul class="space-y-2">
                 <?php
-
 foreach (getFolderBreakdown('.') as $folder => $size): ?>
                     <li class="bg-white p-4 rounded-md shadow-sm flex justify-between items-center">
                         <span class="font-medium"><?= $folder ?></span>
                         <span class="text-sm text-gray-600"><?= formatSize($size) ?></span>
                     </li>
                 <?php
-
 endforeach; ?>
             </ul>
         </div>
     </div>
 </section>
 <?php
-
 function getFolderSize($dir) {
     $size = 0;
     foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS)) as $file) {
@@ -95,5 +91,4 @@ function getFolderBreakdown($dir) {
 }
 ?>
 <?php
-
 get_footer("views/admin"); ?>

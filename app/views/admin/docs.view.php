@@ -1,19 +1,15 @@
 <?php
-
 get_header("views/admin"); ?>
 <section class="py-16 bg-white">
     <div class="container mx-auto px-6 max-w-4xl">
         <h2 class="text-3xl font-bold text-center mb-10">📄 Add Documentation</h2>
         <?php
-
 if (!empty($error)) : ?>
             <div class="bg-red-100 text-red-800 p-4 mb-6 rounded"><?= $error ?></div>
         <?php
-
 elseif (!empty($success)) : ?>
             <div class="bg-green-100 text-green-800 p-4 mb-6 rounded"><?= $success ?></div>
         <?php
-
 endif; ?>
         <form method="POST">
             <?= csrf_token(); ?>
@@ -59,5 +55,4 @@ endif; ?>
     });
 </script>
 <?php
-
 get_footer("views/admin"); ?>

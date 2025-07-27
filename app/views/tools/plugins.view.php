@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/tools"); ?>
 <!-- About Hero Section -->
 <section class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-24">
@@ -9,7 +8,6 @@ get_header("views/tools"); ?>
     </div>
 </section>
 <?php
-
 $plugins = [];
 $pluginBase = plugins_path();
 foreach (scandir($pluginBase) as $folder) {
@@ -28,11 +26,9 @@ foreach (scandir($pluginBase) as $folder) {
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-4xl font-bold mb-12 text-indigo-800">Available Plugins</h2>
         <?php
-
 if (!empty($plugins)) : ?>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 <?php
-
 $cardColors = [
                     'from-pink-600 to-pink-500',
                     'from-purple-500 to-purple-600',
@@ -59,18 +55,14 @@ $cardColors = [
                         <p class="text-sm text-white italic">By <?= htmlspecialchars($plugin['author']) ?></p>
                     </div>
                 <?php
-
 endforeach; ?>
             </div>
         <?php
-
 else : ?>
             <p class="text-gray-600 text-lg">No plugins found.</p>
         <?php
-
 endif; ?>
     </div>
 </section>
 <?php
-
 get_footer("views/tools"); ?>

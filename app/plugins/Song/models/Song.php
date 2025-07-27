@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Plugins\Song\Models;
 use Core\Model;
 class Song extends Model

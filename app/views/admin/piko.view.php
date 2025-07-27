@@ -9,7 +9,6 @@
             </p>
         </div>
     </section>
-
     <!-- Tool Actions -->
     <section class="max-w-6xl mx-auto px-6 py-12">
         <h2 class="text-3xl font-bold text-indigo-800 mb-8">Available Actions</h2>
@@ -25,7 +24,6 @@
                     Run Check
                 </a>
             </div>
-
             <!-- Fix Style -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -37,7 +35,6 @@
                     Auto Fix
                 </a>
             </div>
-
             <!-- Format Code -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -49,7 +46,6 @@
                     Format
                 </a>
             </div>
-
             <!-- Inspect Classes -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -61,7 +57,6 @@
                     Inspect
                 </a>
             </div>
-
             <!-- List PHP Files -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -73,7 +68,6 @@
                     List Files
                 </a>
             </div>
-
             <!-- Prettify Code -->
             <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
                 <div>
@@ -85,23 +79,8 @@
                     Prettify
                 </a>
             </div>
-
-            <!-- NEW: Reorder Methods -->
-            <div class="bg-white rounded-xl shadow p-6 flex flex-col justify-between">
-                <div>
-                    <h3 class="font-bold text-xl text-red-600 mb-2">Reorder Methods</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Organize class methods: Public → Protected → Private (with docblocks preserved).
-                    </p>
-                </div>
-                <a href="<?= url('admin/tools/piko/run/reorderClassMethods') ?>"
-                   class="bg-red-600 hover:bg-red-700 text-white font-semibold w-full py-2 rounded text-center">
-                    Reorder
-                </a>
-            </div>
         </div>
     </section>
-
     <!-- Output Section -->
     <section class="max-w-6xl mx-auto px-6 py-6">
         <div class="bg-white rounded-xl shadow p-6">

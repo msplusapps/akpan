@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin");?>
 <main class="flex-1 bg-gray-100 overflow-y-auto">
     <!-- Hero -->
@@ -16,7 +15,6 @@ get_header("views/admin");?>
         <h2 class="text-3xl font-bold mb-4 text-gray-800">Discovered Controllers (Unregistered)</h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <?php
-
 $allControllers = array_merge(
                 glob("app/controllers/*.php"),
                 glob("app/plugins/*/controllers/*.php")
@@ -47,5 +45,4 @@ $allControllers = array_merge(
     </section>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

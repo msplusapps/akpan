@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 use Core\Controller;
 use App\Models\User;
@@ -185,6 +184,7 @@ class AdminController extends Controller
         }
         echo "<div class='bg-red-100 text-red-700 p-4 rounded-lg shadow'>❌ Method '{$method}' not found in Doctor class.</div>";
     }
+    
     public function doctor() {
         $className = Doctor::class;
         // Get all public methods defined in the Doctor class, excluding inherited ones

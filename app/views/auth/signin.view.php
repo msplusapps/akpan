@@ -1,5 +1,4 @@
 <?php
-
 $_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,11 +94,9 @@ $_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
         <img src="<?= asset('images/login.gif') ?>" alt="Login Animation" class="gif">
         <h1>Login</h1>
         <?php
-
 if (!empty($error)) : ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>
         <?php
-
 endif; ?>
         <form method="POST">
             <?= csrf_token(); ?>

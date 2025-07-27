@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Plugins\Zapper\Controllers;
 use App\Plugins\Zapper\Models\Zapper;
 use Core\Controller;

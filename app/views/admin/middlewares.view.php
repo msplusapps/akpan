@@ -1,5 +1,4 @@
 <?php
-
 use Core\Utils\FileManager;
 get_header("views/admin");
 ?>
@@ -16,7 +15,6 @@ get_header("views/admin");
     <!-- Middlewares -->
     <div class="p-8">
         <?php
-
 $middlewareDir = 'app/middlewares';
         $middlewareFiles = FileManager::getFiles($middlewareDir);
         // Predefined Tailwind background color classes
@@ -24,14 +22,11 @@ $middlewareDir = 'app/middlewares';
         $textColors = ['text-red-800', 'text-green-800', 'text-yellow-800', 'text-blue-800', 'text-purple-800', 'text-pink-800', 'text-indigo-800'];
         ?>
         <?php
-
 if (!empty($middlewareFiles)): ?>
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
                 <?php
-
 foreach ($middlewareFiles as $index => $file): ?>
                     <?php
-
 $name = pathinfo($file, PATHINFO_FILENAME);
                     $bg = $bgColors[$index % count($bgColors)];
                     $text = $textColors[$index % count($textColors)];
@@ -41,18 +36,14 @@ $name = pathinfo($file, PATHINFO_FILENAME);
                         <p class="text-sm <?= $text ?> break-words"><?= $file ?></p>
                     </div>
                 <?php
-
 endforeach; ?>
             </div>
         <?php
-
 else: ?>
             <p class="text-gray-500">No middlewares found in <code><?= $middlewareDir ?></code>.</p>
         <?php
-
 endif; ?>
     </div>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

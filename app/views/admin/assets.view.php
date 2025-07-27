@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/admin"); ?>
 <main class="flex-1 bg-gray-100 overflow-y-auto min-h-screen">
     <section class="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-white py-20 px-10">
@@ -86,7 +85,6 @@ get_header("views/admin"); ?>
         </style>
         <div class="top-level-grid">
             <?php
-
 function formatSize($bytes) {
                 $sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
                 $i = 0;
@@ -169,5 +167,4 @@ function formatSize($bytes) {
     </script>
 </main>
 <?php
-
 get_footer("views/admin"); ?>

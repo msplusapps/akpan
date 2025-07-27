@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Song Player Plugin
  * Version: 1.0

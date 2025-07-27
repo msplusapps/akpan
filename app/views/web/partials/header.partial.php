@@ -1,5 +1,4 @@
 <?php
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,5 +11,4 @@
 </head>
 <body class="font-sans antialiased text-gray-800">
    <?php
-
 get_navbar(); ?>

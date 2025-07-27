@@ -1,5 +1,4 @@
 <?php
-
 get_header("views/tools"); ?>
     <!-- Hero Section -->
     <section class="gradient-bg text-white pt-32 pb-20">
@@ -163,5 +162,4 @@ class User extends Model {
         </div>
     </section>
 <?php
-
 get_footer("views/tools"); ?>
