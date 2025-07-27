@@ -1,5 +1,4 @@
-<?php
-$_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
+<?php $_SESSION['last'] = $_SERVER['REQUEST_URI']; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

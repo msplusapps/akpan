@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +9,4 @@
     <link rel="stylesheet" href="<?=asset("css/main.css")?>">
 </head>
 <body class="font-sans antialiased text-gray-800">
-   <?php
-get_navbar(); ?>
+   <?php get_navbar(); ?>
